@@ -1,0 +1,8 @@
+<template>
+  <svg viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.40563 6.82825C3.64024 5.66076 4.66579 4.8208 5.85663 4.8208H9.34868H13.2043C14.418 4.8208 15.4563 5.69251 15.6665 6.88785L17.5861 17.8045C17.8552 19.3349 16.6777 20.7375 15.1238 20.7375H3.66285C2.08429 20.7375 0.900843 19.2925 1.21185 17.7449L3.40563 6.82825Z" :stroke="currentColor"/>
+    <path d="M12.7303 5.7738C12.7303 3.1373 11.3054 1 9.54777 1C7.7901 1 6.36523 3.1373 6.36523 5.7738" :stroke="currentColor" stroke-linecap="round"/>
+    <line x1="7.75" y1="13.3291" x2="11.7105" y2="13.3291" :stroke="currentColor" stroke-linecap="round"/>
+    <line x1="9.65796" y1="11.2764" x2="9.65796" y2="15.2369" :stroke="currentColor" stroke-linecap="round"/>
+  </svg>
+</template>
