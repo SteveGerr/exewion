@@ -1,5 +1,5 @@
 <template>
   <svg viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M1.5 15L7.6482 7.09517C8.06725 6.55639 8.89099 6.58649 9.26961 7.15441L10.8044 9.45662C11.1606 9.99089 11.9208 10.0558 12.3624 9.58967L20.5 1" :stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M1.5 15L7.6482 7.09517C8.06725 6.55639 8.89099 6.58649 9.26961 7.15441L10.8044 9.45662C11.1606 9.99089 11.9208 10.0558 12.3624 9.58967L20.5 1" stroke="" stroke-width="1.5" stroke-linecap="round"/>
   </svg>
 </template>
