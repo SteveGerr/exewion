@@ -21,6 +21,7 @@ defineProps({
 <style lang="scss" scoped>
   .steps {
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
     width: 100%;
