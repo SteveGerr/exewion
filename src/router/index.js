@@ -8,12 +8,51 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/ui-kit',
+    name: 'ui-kit',
+    component: () => import('../views/UI-kit.vue')
+  },
+  {
+    path: '/main',
+    name: 'main',
+    component: () => import('../views/MainView.vue'),
+    children: [
+      {
+        path: '/start',
+        name: 'start',
+        component: () => import('../views/StartView.vue')
+      },
+      {
+        path: '/stock',
+        name: 'stock',
+        component: () => import('../views/StartView.vue')
+      },
+      {
+        path: '/portfolio',
+        name: 'portfolio',
+        component: () => import('../views/StartView.vue')
+      },
+      {
+        path: '/wallet',
+        name: 'wallet',
+        component: () => import('../views/StartView.vue')
+      },
+      {
+        path: '/account',
+        name: 'account',
+        component: () => import('../views/StartView.vue')
+      }
+    ]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/LoginView.vue')
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('../views/RegisterView.vue')
   }
 ]
 
