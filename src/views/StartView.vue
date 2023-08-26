@@ -1,19 +1,28 @@
 <template>
-  <div class="start">
-    <div class="start__wrapper">
-      <StepStart></StepStart>
-      <StepTwo></StepTwo>
-      <StepThree></StepThree>
-      <StepFour></StepFour>
-    </div>
-  </div>
+  <AppWrapper class="start">
+      <div class="start__wrapper">
+        <StepOne v-if="currentStep === 1"></StepOne>
+        <StepTwo v-if="currentStep === 2"></StepTwo>
+        <StepThree v-if="currentStep === 3"></StepThree>
+        <StepFour v-if="currentStep === 4"></StepFour>
+      </div>
+      <AppSteps class="start__steps" :current="currentStep"></AppSteps>
+  </AppWrapper>
 </template>
 
 <script setup>
-import StepStart from '@/components/steps/StepStart.vue'
+import { useStepsStore } from '@/store/stepsStore'
+import { storeToRefs } from 'pinia'
+import StepOne from '@/components/steps/StepOne.vue'
 import StepTwo from '@/components/steps/StepTwo.vue'
 import StepThree from '@/components/steps/StepThree.vue'
 import StepFour from '@/components/steps/StepFour.vue'
+import AppSteps from '@/components/steps/AppSteps.vue'
+import AppWrapper from '@/components/wrapper/AppWrapper.vue'
+
+const store = useStepsStore()
+
+const { currentStep } = storeToRefs(store)
 
 </script>
 
@@ -24,7 +33,7 @@ import StepFour from '@/components/steps/StepFour.vue'
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 710px;
+    max-width: 715px;
     height: 100%;
 
     &__rocket {
@@ -45,7 +54,8 @@ import StepFour from '@/components/steps/StepFour.vue'
       align-items: center;
       justify-content: center;
       width: 100%;
-      margin: auto 0;
+      height: 100%;
+      overflow-x: auto;
     }
 
     &__link {
