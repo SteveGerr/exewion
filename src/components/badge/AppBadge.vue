@@ -3,7 +3,7 @@
     <div class="badge__name">
       <slot></slot>
     </div>
-    <AppButton class="badge__close" @onClick="onClose" transparent>
+    <AppButton class="badge__close" @onClick="$emit('remove')" transparent>
       <img :src="cross" alt="">
     </AppButton>
   </div>
@@ -13,9 +13,6 @@
 import AppButton from '@/components/buttons/AppButton.vue'
 import cross from '@/assets/svg/cross.svg'
 
-const onClose = () => {
-  console.log('Close')
-}
 </script>
 
 <style lang="scss" scoped>
