@@ -1,14 +1,6 @@
-import { createStore } from 'vuex'
 
-export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+import { useStepsStore } from './stepsStore'
+
+export default {
+  useStepsStore
+}
