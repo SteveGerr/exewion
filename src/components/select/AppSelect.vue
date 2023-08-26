@@ -10,18 +10,18 @@
         v-for="(option, i) of options"
         :key="i"
         @click="
-          selected = option;
+          selected = typeof option === 'object' ? option['name'] : option ;
           open = false;
           $emit('input', option);
         "
       >
-        {{ option }}
+        {{ typeof option === 'object' ? option['name'] : option }}
       </div>
     </div>
   </div>
 </template>
 <script setup>
-import { defineEmits, defineProps, ref, onMounted } from 'vue'
+import { defineProps, ref } from 'vue'
 import arrow from '@/assets/svg/arrow-down.svg'
 
 const props = defineProps({
@@ -41,16 +41,12 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['input'])
-
 const selected = ref()
 const open = ref(false)
 
-selected.value = props.defaultValue || (props.options.length > 0 ? props.options[0] : null)
+selected.value = props.defaultValue ||
+(props.options.length > 0 ? typeof props.options[0] === 'object' ? props.options[0].name : props.options[0] : null)
 
-onMounted(() => {
-  emit('input', selected)
-})
 </script>
 <style lang="scss" scoped>
 
