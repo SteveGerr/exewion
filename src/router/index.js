@@ -29,7 +29,7 @@ const routes = [
       {
         path: '/portfolio',
         name: 'portfolio',
-        component: () => import('../views/StartView.vue')
+        component: () => import('../views/PortfolioView.vue')
       },
       {
         path: '/wallet',
@@ -37,9 +37,9 @@ const routes = [
         component: () => import('../views/StartView.vue')
       },
       {
-        path: '/account',
-        name: 'account',
-        component: () => import('../views/StartView.vue')
+        path: '/profile',
+        name: 'profile',
+        component: () => import('../views/ProfileView.vue')
       }
     ]
   },
