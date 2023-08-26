@@ -2,9 +2,9 @@
   <div :class="['widget', {'green': green, 'purple': purple}]">
     <h4 class="widget__heading">{{ heading }}</h4>
     <div class="widget__data">
-    <div class="widget__icon">
-      <slot name="icon"></slot>
-    </div>
+      <div class="widget__icon">
+        <slot name="icon"></slot>
+      </div>
       <div v-if="percent" class="widget__percent">
         <p>{{ percent }}%</p>
       </div>
@@ -86,7 +86,7 @@ defineProps({
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 5px;
+      // margin-bottom: 5px;
     }
 
     &__number {
@@ -111,6 +111,9 @@ defineProps({
     }
 
     &__icon {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
       margin: 0 10px 0 0;
     }
   }
