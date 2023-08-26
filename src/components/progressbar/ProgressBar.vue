@@ -39,7 +39,7 @@ const props = defineProps({
     width: 330px;
     position: absolute;
     top: calc(50% - 15px);
-    left: calc(50% - 115px);
+    left: calc(50% - 175px);
     @include text(30px, normal, 600);
     letter-spacing: 0.325px;
     color: $white;
