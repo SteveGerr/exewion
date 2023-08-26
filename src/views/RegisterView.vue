@@ -9,13 +9,13 @@
           <img class="login__company-name-image" :src="Exewion" alt="">
         </div>
         <div class="login__description">crypto portfolio in 3 minutes</div>
-        <router-link to="/register">
-          <AppButton class="login__register" green register middle>
+        <router-link class="login__register" to="/register">
+          <AppButton green register middle>
             register
           </AppButton>
         </router-link>
-        <router-link to="/login">
-          <AppButton class="login__login" purple login middle>
+        <router-link class="login__login" to="/login">
+          <AppButton purple login middle>
             login
           </AppButton>
         </router-link>
