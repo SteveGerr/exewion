@@ -2,11 +2,13 @@
   <div :class="['widget', {'green': green, 'purple': purple}]">
     <h4 class="widget__heading">{{ heading }}</h4>
     <div class="widget__data">
-      <div class="widget__icon">
-        <slot name="icon"></slot>
-      </div>
-      <div v-if="percent" class="widget__percent">
-        <p>{{ percent }}%</p>
+      <div class="widget__row">
+        <div class="widget__icon">
+          <slot name="icon"></slot>
+        </div>
+        <div v-if="percent" class="widget__percent">
+          <p>{{ percent }}%</p>
+        </div>
       </div>
       <div class="widget__number">
         <p>{{ number }}₮</p>
@@ -35,6 +37,10 @@ defineProps({
     border-radius: 1.5rem;
     background-color: $background-color;
     border: $border-dark-purple;
+
+    &__row {
+      display: flex;
+    }
 
     &.purple,
     &.green {
