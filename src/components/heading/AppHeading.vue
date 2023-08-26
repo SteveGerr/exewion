@@ -16,6 +16,8 @@ defineProps({
 
 <style lang="scss" scoped>
   .heading {
+    width: fit-content;
+    margin: 0 0 6px 0;
     position: relative;
     @include text(17px, 28px, 400);
     color: $white;
