@@ -22,13 +22,16 @@
                     v-for="(item, i) in data"
                     :key="i"
                 >
-                    <td v-for="(key, i) in keys" :key="i" class="app-table__body-item">
+                <td v-for="(key, i) in keys" :key="i" class="app-table__body-item">
+                      <div :class="['app-table__body-item-value']">
+                        <div v-if="key === 'coinName'" class="app-table__cirle"></div>
                         <span v-if="typeof key === 'object'">
                           {{ key }}
                             {{ reduceTableItems(item, key) }}
                         </span>
                         <span v-else>{{ item[key] }}</span>
-                    </td>
+                      </div>
+                  </td>
                     <slot name="td" :item="item"></slot>
                 </tr>
             </tbody>
@@ -50,8 +53,9 @@ const reduceTableItems = (obj, path) => {
   }, obj)
 }
 </script>
-<style lang="scss" soped>
+<style lang="scss">
 .app-table {
+  width: 100%;
   position: relative;
   overflow-x: auto;
   color: $white;
@@ -59,29 +63,53 @@ const reduceTableItems = (obj, path) => {
 
   &__main {
     border-collapse: collapse;
+    width: 100%;
+
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
   }
 
   &__head {
     @include text(15px, 28px, 400);
     text-transform: lowercase;
     color: $lilac;
+  }
 
-    tr {
-      border-bottom: 1px solid $lilac-back;
+  &__row {
+    td:nth-child(2n+1) {
+      color: $table-td-lilac;
     }
   }
 
   &__head-item {
-    text-align: left;
+    text-align: center;
   }
 
   &__body-item {
-    padding: 12px 0 12px 0;
-    &:not(:last-child) {
-      padding: 12px 30px 12px 0;
-    }
+    position: relative;
+    max-height: 39px;
+    border-top: 1px solid $lilac-back;
+
     @include text(17px, 28px, 400);
     color: $white;
+  }
+
+  &__body-item-value {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  &__cirle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: $lilac-back;
   }
 }
 </style>
