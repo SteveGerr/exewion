@@ -48,7 +48,7 @@ const onChange = (e) => {
       left: 0;
 
       &:checked ~ .checkbox-button__body {
-        border: 1px solid $green;
+        border: 2px solid $green;
         box-shadow: 0px 0px 8px 0px rgba(1, 176, 156, 0.70);
       }
     }
