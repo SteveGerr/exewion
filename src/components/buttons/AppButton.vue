@@ -47,7 +47,7 @@ defineProps({
 defineEmits(['onClick'])
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .app-button {
   display: flex;
   align-items: center;
@@ -61,11 +61,11 @@ defineEmits(['onClick'])
   color: $white;
   text-transform: uppercase;
   transition: all .4s ease-in-out;
+  white-space: nowrap;
   cursor: pointer;
 
   &:hover {
     transition: all .4s ease-in-out;
-    font-size: 19px;
 
     &.green {
       box-shadow: 0px 0px 25px 0px $green;
