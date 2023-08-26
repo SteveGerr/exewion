@@ -14,7 +14,7 @@
 import { defineProps } from 'vue'
 
 defineProps({
-  current: Boolean
+  current: Number
 })
 </script>
 
