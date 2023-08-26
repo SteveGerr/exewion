@@ -2,18 +2,17 @@
   <div class="main">
     <AppHeader></AppHeader>
     <div class="main__body">
-        <AppSidebar :items="sidebarItems" :current="route.path">
+        <AppSidebar class="main__sidebar" :items="sidebarItems" :current="route.path">
         </AppSidebar>
-        <AppWrapper class="main__content">
+        <div class="main__content">
           <RouterView></RouterView>
-        </AppWrapper>
+        </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { useRoute } from 'vue-router'
-import AppWrapper from '@/components/wrapper/AppWrapper.vue'
 import AppSidebar from '@/components/sidebar/AppSidebar.vue'
 import AppHeader from '@/components/header/AppHeader.vue'
 import RocketIcon from '@/components/icons/RocketIcon.vue'
@@ -52,7 +51,7 @@ const sidebarItems = [
   {
     id: 5,
     icon: ManIcon,
-    route: '/account',
+    route: '/profile',
     active: false
   }
 ]
@@ -63,18 +62,29 @@ const sidebarItems = [
     align-items: flex-start;
     flex-direction: column;
     height: 100%;
-    padding: 0 0 30px 10px;
+    overflow-x: auto;
 
     &__body {
       display: flex;
+      align-items: flex-start;
       width: 100%;
       height: 100%;
+      margin: 7px 0 35px 0;
       gap: 40px;
     }
 
     &__content {
       width: 100%;
-      max-width: 710px;
+      height: 100%;
+      margin: 0 0 30px 0;
+    }
+
+    &__sidebar {
+      height: 100%;
+      margin: 0 0 0 8px;
+      &.app-wrapper {
+        padding: 8px 11px;
+      }
     }
   }
 </style>
