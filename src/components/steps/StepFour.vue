@@ -48,7 +48,7 @@
 </template>
 
 <script setup>
-import { useStepsStore } from '@/store/stepsStore'
+import { useStepsStore } from '@/store/store'
 import { storeToRefs } from 'pinia'
 import AppButton from '@/components/buttons/AppButton.vue'
 import AppHeading from '@/components/heading/AppHeading.vue'

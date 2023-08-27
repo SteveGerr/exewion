@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-import { useStepsStore } from '@/store/stepsStore'
+import { useStepsStore } from '@/store/store'
 import AppHeading from '../heading/AppHeading.vue'
 import AppInput from '@/components/inputs/AppInput.vue'
 import Binance from '@/components/icons/BinanceIcon.vue'

@@ -12,7 +12,7 @@
 import { ref } from 'vue'
 import Rocket from '@/assets/svg/rocket.svg'
 import Progressbar from '@/components/progressbar/ProgressBar.vue'
-import { useStepsStore } from '@/store/stepsStore'
+import { useStepsStore } from '@/store/store'
 
 const store = useStepsStore()
 

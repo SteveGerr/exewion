@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { useStepsStore } from '@/store/stepsStore'
+import { useStepsStore } from '@/store/store'
 import AppButton from '@/components/buttons/AppButton.vue'
 import Rocket from '@/assets/svg/rocket.svg'
 import AppLink from '@/components/links/AppLink.vue'

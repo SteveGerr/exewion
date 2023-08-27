@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { useStepsStore } from '@/store/stepsStore'
+import { useStepsStore } from '@/store/store'
 import { storeToRefs } from 'pinia'
 import StepOne from '@/components/steps/StepOne.vue'
 import StepTwo from '@/components/steps/StepTwo.vue'
