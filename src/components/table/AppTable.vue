@@ -57,9 +57,12 @@ const reduceTableItems = (obj, path) => {
 .app-table {
   width: 100%;
   position: relative;
-  overflow-x: auto;
   color: $white;
   background-color: $background-color;
+
+  @media screen and (max-width: 768px) {
+    overflow-x: auto;
+  }
 
   &__main {
     border-collapse: collapse;
