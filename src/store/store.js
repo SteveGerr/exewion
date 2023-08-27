@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 export const useStepsStore = defineStore('steps', () => {
   const currentStep = ref(1)
-  const rangeValue = ref(0)
+  const rangeValue = ref(1)
   const coinsList = ref([
     {
       id: 1,
