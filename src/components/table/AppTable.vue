@@ -57,7 +57,6 @@ const reduceTableItems = (obj, path) => {
 .app-table {
   width: 100%;
   position: relative;
-  overflow-x: auto;
   color: $white;
   background-color: $background-color;
 
