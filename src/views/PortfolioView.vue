@@ -109,6 +109,10 @@ const datasSecond = [
       flex-direction: column;
       max-width: min-content;
 
+      @media screen and (max-width: 768px) {
+        max-width: 100%;
+      }
+
       &.app-wrapper {
         padding: 10px 20px;
       }
@@ -139,6 +143,11 @@ const datasSecond = [
       grid-template-rows: 1fr 1fr;
       margin: 0 0 22px 0;
       gap: 15px;
+
+      @media screen and (max-width: 768px) {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+      }
     }
 
     &__label {
@@ -180,14 +189,26 @@ const datasSecond = [
 
     &__tables {
       display: flex;
+
+      @media screen and (max-width: 768px) {
+        flex-wrap: wrap;
+      }
     }
 
     &__circle-count {
       margin: 0 35px 0 0;
+
+      @media screen and (max-width: 768px) {
+        margin: 0 auto 20px auto;
+      }
     }
 
     &__first-table {
       margin: 0 43px 0 0;
+
+      @media screen and (max-width: 768px) {
+        margin: 0;
+      }
     }
   }
 
