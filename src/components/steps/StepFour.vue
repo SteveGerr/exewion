@@ -81,6 +81,10 @@ const { changeStep, addCoin, changeBalanceRange, removeSlelectedCoins } = store
       max-width: 208px;
       font-size: 23px;
       margin: 0 0 10px 0;
+
+      @media screen and (max-width: 768px){
+        margin: 0 0 60px 0;
+      }
     }
 
     &__wrapper {
@@ -104,6 +108,12 @@ const { changeStep, addCoin, changeBalanceRange, removeSlelectedCoins } = store
       flex-wrap: nowrap;
       width: 100%;
       gap: 20px;
+
+      @media screen and (max-width: 768px) {
+        flex-wrap: wrap;
+        margin: 0 0 10px 0;
+        gap: 10px;
+      }
     }
 
     &__label {
@@ -132,11 +142,22 @@ const { changeStep, addCoin, changeBalanceRange, removeSlelectedCoins } = store
       align-items: center;
       width: 100%;
       margin: 0 0 50px 0;
+
+      @media screen and (max-width: 768px){
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
     }
 
     &__enter-balance {
       max-width: 158px;
       position: relative;
+
+      @media screen and (max-width: 768px){
+        max-width: 100%;
+        width: 100%;
+      }
 
       .app-input__input {
         padding: 9px 55px 9px 9px;
@@ -148,6 +169,12 @@ const { changeStep, addCoin, changeBalanceRange, removeSlelectedCoins } = store
     &__balance-range {
       max-width: 260px;
       margin: 0 15px;
+
+      @media screen and (max-width: 768px){
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+      }
     }
 
     &__enter-balance-label {
@@ -181,6 +208,10 @@ const { changeStep, addCoin, changeBalanceRange, removeSlelectedCoins } = store
       margin: 0 0 100px 0;
       gap: 14px;
       overflow-x: auto;
+
+      @media screen and (max-width: 768px){
+        margin: 0 0 60px 0;
+      }
     }
 
   }
