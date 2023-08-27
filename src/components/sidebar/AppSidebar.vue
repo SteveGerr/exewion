@@ -31,6 +31,11 @@ defineProps({
   max-width: 62px;
   min-height: 100%;
 
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    max-width: auto;
+  }
+
   &__icon {
     width: 25px;
     height: 25px;
