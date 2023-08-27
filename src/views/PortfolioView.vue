@@ -110,6 +110,7 @@ const datasSecond = [
       max-width: min-content;
 
       @media screen and (max-width: 768px) {
+        width: 100%;
         max-width: 100%;
       }
 
