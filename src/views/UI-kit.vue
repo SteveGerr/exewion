@@ -95,7 +95,7 @@ import DiagramIcon from '@/components/icons/DiagrammIcon.vue'
 import ThunderIcon from '@/components/icons/ThunderIcon.vue'
 import RadioButton from '@/components/radioButton/RadioButton.vue'
 import Binance from '@/components/icons/BinanceIcon.vue'
-import Bybit from '@/assets/svg/Bybit.svg'
+import Bybit from '@/assets/svg/bybit.svg'
 
 const email = ref('')
 const rangeValue = ref(10)
