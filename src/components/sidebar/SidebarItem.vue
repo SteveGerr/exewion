@@ -24,6 +24,10 @@ defineProps({
   position: relative;
   cursor: pointer;
 
+  @media screen and (max-width: 768px) {
+    margin: 8px;
+  }
+
   &.active {
     &:after {
       content: '';
@@ -35,6 +39,10 @@ defineProps({
       background: linear-gradient(270deg, #6024DE 0%, #7B37FF 100%);
       border-radius: 0px 20px 20px 0px;
       z-index: 1;
+
+      @media screen and (max-width: 768px) {
+        transform: rotate(90deg) translateY(3px);
+      }
     }
   }
 
