@@ -72,9 +72,8 @@ onMounted(() => {
     }
 
     &__button-text {
-      width: 17px;
-      margin: 0 .7rem 0 0;
-      @include text(1.6rem, 2.4rem, 600);
+      margin: 0 7px 0 0;
+      @include text(16px, 24px, 600);
       letter-spacing: -0.3px;
       color: $white;
     }

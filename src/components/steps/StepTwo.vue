@@ -89,6 +89,10 @@ const ipAddress = '45.82.71.35'
       align-items: center;
       margin: 10px 0 20px 0;
       gap: 35px;
+
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+      }
     }
 
     &__radio-button {

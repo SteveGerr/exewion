@@ -2,12 +2,12 @@
   <header>
     <nav class="navbar">
       <div class="navbar__left">
-        <AppButton class="navbar__exit" transparent>
+        <AppButton @on-click="showMenu = !showMenu" class="navbar__burger" transparent>
           <img :src="burger" alt="">
         </AppButton>
         <img class="navbar__logo" :src="exewion" alt="">
       </div>
-      <div class="navbar__right">
+      <div :class="['navbar__right', {show: showMenu}]">
         <AppWrapper class="navbar__select-langauge">
           <SelectLanguage :options="['ru', 'eng']"></SelectLanguage>
         </AppWrapper>
@@ -52,6 +52,7 @@
   </header>
 </template>
 <script setup>
+import { ref } from 'vue'
 import AppButton from '@/components/buttons/AppButton.vue'
 import AppWrapper from '@/components/wrapper/AppWrapper.vue'
 import SelectLanguage from '@/components/select/SelectLanguage.vue'
@@ -66,6 +67,8 @@ import tSymbol from '@/assets/svg/green-circle-T.svg'
 import plus from '@/assets/svg/green-circle-plus.svg'
 import arrowsUp from '@/assets/svg/green-arrows-up.svg'
 
+const showMenu = ref(false)
+
 </script>
 <style lang="scss" scoped>
   header {
@@ -77,14 +80,47 @@ import arrowsUp from '@/assets/svg/green-arrows-up.svg'
     width: 100%;
     padding: 1px 24px;
 
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      padding: 12px 24px;
+    }
+
     &__left {
       display: flex;
+      align-items: center;
       gap: 20px;
+
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        margin: 0 0 20px 0;
+      }
     }
 
     &__right {
       display: flex;
-      gap: 13px
+      gap: 13px;
+
+      @media screen and (max-width: 768px) {
+        display: none;
+        flex-direction: column;
+
+        &.show {
+          display: flex;
+
+          .app-wrapper {
+            justify-content: center;
+            max-width: max-content;
+          }
+        }
+      }
+
+      &.mobile {
+        display: none;
+      }
+      &.mobile.active {
+        display: flex;
+        flex-direction: column;
+      }
     }
 
     &__burger {

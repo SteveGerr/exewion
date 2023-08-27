@@ -59,13 +59,22 @@ import AppHeading from '@/components/heading/AppHeading.vue'
     @media screen and (max-width: 768px) {
       grid-template-columns: auto;
       height: auto;
+      padding: 0;
     }
 
     &__logo {
       margin: 7.5rem 0 4.3rem 0;
 
+    @media screen and (max-width: 768px) {
+      margin: 0 0 4.3rem 0;
+    }
+
       &-img {
         width: 24.2rem;
+
+        @media screen and (max-width: 768px) {
+          width: 8.2rem;
+        }
       }
     }
 
@@ -80,6 +89,10 @@ import AppHeading from '@/components/heading/AppHeading.vue'
       letter-spacing: 1px;
       text-transform: uppercase;
       color: $white;
+
+      @media screen and (max-width: 768px) {
+        margin: 0 0 3rem 0;
+      }
     }
 
     &__register {
@@ -89,7 +102,7 @@ import AppHeading from '@/components/heading/AppHeading.vue'
     &__register,
     &__login {
       width: 100%;
-      max-width: 207px;
+      max-width: 220px;
     }
 
     &__buttons {
@@ -101,6 +114,7 @@ import AppHeading from '@/components/heading/AppHeading.vue'
       margin: 100px 0 0 0;
 
       @media screen and (max-width: 768px) {
+        margin: 0;
         order: 2;
       }
     }
@@ -114,6 +128,7 @@ import AppHeading from '@/components/heading/AppHeading.vue'
       padding: 8rem 0 9rem 0;
 
       @media screen and (max-width: 768px) {
+        padding: 3rem 0 9rem 0;
         order: 1;
       }
 
@@ -123,6 +138,10 @@ import AppHeading from '@/components/heading/AppHeading.vue'
       width: 51px;
       height: 73px;
       margin-bottom: 34px;
+
+      @media screen and (max-width: 768px) {
+        margin-bottom: 24px;
+      }
     }
 
     &__register-title {

@@ -60,14 +60,7 @@ import AppHeading from '@/components/heading/AppHeading.vue'
     @media screen and (max-width: 768px) {
       grid-template-columns: auto;
       height: auto;
-    }
-
-    &__logo {
-      margin: 7.5rem 0 4.3rem 0;
-
-      &-img {
-        width: 24.2rem;
-      }
+      padding: 0;
     }
 
     &__company-name-image {
@@ -89,7 +82,8 @@ import AppHeading from '@/components/heading/AppHeading.vue'
 
     &__register,
     &__login {
-      width: 207px;
+      width: 100%;
+      max-width: 220px;
     }
 
     &__buttons {
@@ -101,6 +95,7 @@ import AppHeading from '@/components/heading/AppHeading.vue'
       margin: 100px 0 0 0;
 
       @media screen and (max-width: 768px) {
+        margin: 10px 0 0 0;
         order: 2;
       }
     }
