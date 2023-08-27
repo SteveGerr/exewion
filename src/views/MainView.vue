@@ -71,6 +71,10 @@ const sidebarItems = [
       height: 100%;
       margin: 7px 0 35px 0;
       gap: 40px;
+
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+      }
     }
 
     &__content {
@@ -82,6 +86,11 @@ const sidebarItems = [
     &__sidebar {
       height: 100%;
       margin: 0 0 0 8px;
+
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        margin: 0;
+      }
       &.app-wrapper {
         padding: 8px 11px;
       }
