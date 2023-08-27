@@ -81,11 +81,20 @@ const datas = [
     flex-wrap: wrap;
   }
 
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
   &__row {
     display: flex;
 
     &_first {
       margin: 0 0 28px 0;
+
+      @media screen and (max-width: 530px){
+        flex-direction: column;
+        align-items: center;
+      }
     }
   }
 
@@ -106,6 +115,9 @@ const datas = [
     &.app-wrapper {
       flex-direction: column;
 
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
     }
   }
 
@@ -134,6 +146,10 @@ const datas = [
     justify-content: flex-end;
     align-items: center;
     margin: 0 0 8px 70px;
+
+    @media screen and (max-width: 530px){
+      margin: 20px 0 8px 0;
+    }
   }
 
   &__form-buttons {
@@ -142,6 +158,10 @@ const datas = [
     align-items: center;
     flex-wrap: nowrap;
     gap: 15px;
+
+    @media screen and (max-width: 768px) {
+      flex-wrap: wrap;
+    }
   }
 
   &__password {
@@ -152,6 +172,10 @@ const datas = [
 
     @media screen and (max-width: 1155px) {
       max-width: 495px;
+    }
+
+    @media screen and (max-width: 768px) {
+      max-width: 100%;
     }
   }
 
