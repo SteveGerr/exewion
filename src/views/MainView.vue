@@ -8,6 +8,7 @@
           <RouterView></RouterView>
         </div>
     </div>
+    <!-- <AppSidebar class="main__sidebar" :items="sidebarItems" :current="route.path"></AppSidebar> -->
   </div>
 </template>
 
@@ -74,6 +75,8 @@ const sidebarItems = [
 
       @media screen and (max-width: 768px) {
         flex-direction: column;
+        justify-content: space-between;
+        margin: 7px 0 0 0;
       }
     }
 
@@ -81,6 +84,11 @@ const sidebarItems = [
       width: 100%;
       height: 100%;
       margin: 0 0 30px 0;
+
+      @media screen and (max-width: 768px) {
+        height: auto;
+        order: 1;
+      }
     }
 
     &__sidebar {
@@ -88,11 +96,20 @@ const sidebarItems = [
       margin: 0 0 0 8px;
 
       @media screen and (max-width: 768px) {
+        height: auto;
         width: 100%;
         margin: 0;
+        border-radius: 0;
+        order: 2;
       }
       &.app-wrapper {
         padding: 8px 11px;
+      }
+
+      &_desktop {
+        @media screen and (max-width: 768px) {
+          display: none;
+        }
       }
     }
   }
