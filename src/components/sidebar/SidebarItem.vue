@@ -41,7 +41,12 @@ defineProps({
       z-index: 1;
 
       @media screen and (max-width: 768px) {
-        transform: rotate(90deg) translateY(3px);
+        border-radius: 25px 25px 0px 0px;
+        left: calc(50% - 25px);
+        top: -20px;
+        bottom: -15px;
+        right: 0;
+        width: 50px;
       }
     }
   }
