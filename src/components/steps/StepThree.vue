@@ -2,7 +2,7 @@
   <div class="step-three">
       <div class="step-three__wrapper">
         <img class="step-three__rocket" :src="Rocket" alt="">
-        <Progressbar class="step-three__progressbar" :value="ProgressValue"></Progressbar>
+        <Progressbar class="step-three__progressbar" :percent="percent" :value="ProgressValue"></Progressbar>
         <p class="step-three__text">осталось совсем немного</p>
       </div>
   </div>
@@ -19,9 +19,11 @@ const store = useStepsStore()
 const { changeStep } = store
 
 const ProgressValue = ref(50)
+const percent = ref(50)
 
 setInterval(() => {
   ProgressValue.value += 10
+  percent.value += 10
 }, 1000)
 
 setTimeout(() => {

@@ -5,7 +5,7 @@
       :style="[{'width': `${props.value}%`}]"
       >
     </div>
-    <div v-if="!simple" class="progress-bar__percent">50%/100%</div>
+    <div v-if="!simple" class="progress-bar__percent">{{ percent }}%/100%</div>
   </div>
 </template>
 
@@ -13,8 +13,13 @@
 import { defineProps } from 'vue'
 const props = defineProps({
   value: Number,
-  simple: Boolean
+  simple: Boolean,
+  percent: {
+    type: Number,
+    default: 50
+  }
 })
+
 </script>
 <style lang="scss" scoped>
 .progress-bar {
