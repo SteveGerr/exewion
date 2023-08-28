@@ -3,7 +3,9 @@
     <AppWrapper>
       <div class="login__buttons">
         <div class="login__logo">
-          <img class="login__logo-img" :src="Logo" alt="">
+          <RouterLink to="/start">
+            <img class="login__logo-img" :src="Logo" alt="">
+          </RouterLink>
         </div>
         <div class="login__company-name">
           <img class="login__company-name-image" :src="Exewion" alt="">
