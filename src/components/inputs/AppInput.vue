@@ -67,8 +67,10 @@ const updateValue = (e) => {
   &.purple {
     .app-input__input {
       background: $lilac-back;
-
+      @include text(18px, normal, 500);
+      color: $white;
       &::placeholder {
+        @include text(17px, normal, 500);
         color: $placeholder-purple;
       }
     }
@@ -90,25 +92,29 @@ const updateValue = (e) => {
   &__input {
     width: 100%;
     height: 45px;
-    padding: 0.7rem;
+    padding: 7px;
     background: $white;
-    @include text(3rem, 1.4rem, 600);
-    color: $white;
+    @include text(18px, normal, 400);
+    color: $dark-blue;
     border-radius: 10px;
     border: none;
     outline: none;
 
     &::placeholder {
-      @include text(14px, normal, 400);
-      position: relative;
-      bottom: calc(50% - 8px);
+      @include text(15px, normal, 400);
       letter-spacing: 0.325px;
       color: $gray;
     }
 
     @media (min-width: $bp-tablet) {
       padding: 9px;
-      @include text(3.5rem, 1.4rem, 600);
+      @include text(18px, normal, 400);
+
+      &::placeholder {
+        @include text(15px, normal, 400);
+        letter-spacing: 0.325px;
+        color: $gray;
+      }
     }
   }
 
