@@ -205,6 +205,7 @@ const { changeStep, addCoin, changeBalanceRange, removeSlelectedCoins } = store
       display: flex;
       align-items: center;
       width: 100%;
+      height: 45px;
       margin: 0 0 100px 0;
       gap: 14px;
       overflow-x: auto;
