@@ -101,7 +101,7 @@ const updateValue = (e) => {
     &::placeholder {
       @include text(14px, normal, 400);
       position: relative;
-      bottom: 3px;
+      bottom: calc(50% - 8px);
       letter-spacing: 0.325px;
       color: $gray;
     }
