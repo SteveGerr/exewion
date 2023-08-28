@@ -125,8 +125,10 @@ const showMenu = ref(false)
 
     &__burger {
       display: flex;
-      width: 29px;
-      height: 16px;
+      &.app-button {
+        width: 29px;
+        height: 16px;
+      }
     }
 
     &__exit {
