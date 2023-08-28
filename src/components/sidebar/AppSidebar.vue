@@ -33,7 +33,9 @@ defineProps({
 
   @media screen and (max-width: 768px) {
     flex-direction: row;
-    max-width: auto;
+    justify-content: space-between;
+    max-width: 100%;
+    min-height: auto;
   }
 
   &__icon {
