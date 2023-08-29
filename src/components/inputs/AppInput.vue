@@ -19,7 +19,7 @@
       />
       <AppButton
         v-if="copy"
-        @on-click="$emit('copy')"
+        @on-click="$emit('onCopy')"
         class="app-input__copy"
         small
         green
