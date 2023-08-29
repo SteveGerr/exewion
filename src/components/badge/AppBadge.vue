@@ -4,14 +4,14 @@
       <slot></slot>
     </div>
     <AppButton class="badge__close" @onClick="$emit('remove')" transparent>
-      <img :src="cross" alt="">
+      <CrossIcon class="badge__close-icon" />
     </AppButton>
   </div>
 </template>
 
 <script setup>
 import AppButton from '@/components/buttons/AppButton.vue'
-import cross from '@/assets/svg/cross.svg'
+import CrossIcon from '@/components/icons/CrossIcon.vue'
 
 </script>
 
@@ -36,10 +36,10 @@ import cross from '@/assets/svg/cross.svg'
       width: 15px;
       height: 15px;
       position: relative;
+    }
 
-      img {
-        position: absolute;
-      }
+    &__close-icon {
+      position: absolute;
     }
   }
 </style>
