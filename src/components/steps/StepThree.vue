@@ -1,7 +1,7 @@
 <template>
   <div class="step-three">
       <div class="step-three__wrapper">
-        <img class="step-three__rocket" :src="Rocket" alt="">
+        <RocketIcon class="step-three__rocket" />
         <Progressbar class="step-three__progressbar" :percent="percent" :value="ProgressValue"></Progressbar>
         <p class="step-three__text">осталось совсем немного</p>
       </div>
@@ -10,9 +10,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import Rocket from '@/assets/svg/rocket.svg'
 import Progressbar from '@/components/progressbar/ProgressBar.vue'
 import { useStepsStore } from '@/store/store'
+import RocketIcon from '@/components/icons/RocketIcon.vue'
 
 const store = useStepsStore()
 
@@ -46,6 +46,7 @@ setTimeout(() => {
       width: 51px;
       height: 73px;
       margin: 0 0 35px 0;
+      stroke: $white;
     }
 
     &__wrapper {
