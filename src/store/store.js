@@ -4,6 +4,7 @@ import { defineStore } from 'pinia'
 export const useStepsStore = defineStore('steps', () => {
   const currentStep = ref(1)
   const rangeValue = ref(1)
+  const ipAddress = ref('45.82.71.35')
   const coinsList = ref([
     {
       id: 1,
@@ -53,11 +54,12 @@ export const useStepsStore = defineStore('steps', () => {
   return {
     removeSlelectedCoins,
     changeBalanceRange,
+    selectedCoins,
     currentStep,
     changeStep,
+    rangeValue,
+    ipAddress,
     coinsList,
-    selectedCoins,
-    addCoin,
-    rangeValue
+    addCoin
   }
 })
