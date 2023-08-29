@@ -36,6 +36,10 @@ const { currentStep } = storeToRefs(store)
     max-width: 715px;
     height: 100%;
 
+    @media screen and (max-width: 768px) {
+      margin: 0 auto;
+    }
+
     &__rocket {
       width: 51px;
       height: 73px;
@@ -55,7 +59,6 @@ const { currentStep } = storeToRefs(store)
       justify-content: center;
       width: 100%;
       height: 100%;
-      overflow-x: auto;
     }
 
     &__link {
