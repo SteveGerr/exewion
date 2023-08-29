@@ -1,5 +1,5 @@
 <template>
-<svg width="190" height="38" viewBox="0 0 190 38" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg class="binance" width="190" height="38" viewBox="0 0 190 38" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g clip-path="url(#clip0_610_214)">
 <path d="M190 0H0V38H190V0Z" fill="url(#pattern0)"/>
 </g>
