@@ -16,19 +16,19 @@
       ]"
       @click="$emit('onClick')"
       >
-    <img v-if="register" class="app-button__arrow-left" :src="ArrowsIcon" alt="">
-    <img v-if="login" class="app-button__arrow-left" :src="ArrowIcon" alt="">
-    <slot></slot>
-    <img v-if="register" class="app-button__arrow-right" :src="ArrowsIcon" alt="">
-    <img v-if="login" class="app-button__arrow-right" :src="ArrowIcon" alt="">
+      <ArrowsRightIcon v-if="register" class="app-button__arrow-left" />
+      <ArrowRightIcon v-if="login" class="app-button__arrow-left" />
+      <slot></slot>
+      <ArrowsRightIcon v-if="register" class="app-button__arrow-right" />
+      <ArrowRightIcon v-if="login" class="app-button__arrow-right" />
   </button>
 </template>
 
 <script setup>
 import { defineProps, defineEmits } from 'vue'
 
-import ArrowsIcon from '@/assets/svg/arrows-right.svg'
-import ArrowIcon from '@/assets/svg/arrow-right.svg'
+import ArrowRightIcon from '@/components/icons/ArrowRightIcon.vue'
+import ArrowsRightIcon from '@/components/icons/ArrowsRightIcon.vue'
 
 defineProps({
   green: Boolean,
