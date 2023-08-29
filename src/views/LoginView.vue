@@ -4,11 +4,11 @@
       <div class="login__buttons">
         <div class="login__logo">
           <RouterLink to="/start">
-            <img class="login__logo-img" :src="Logo" alt="">
+            <LogoIcon class="login__logo-img" />
           </RouterLink>
         </div>
         <div class="login__company-name">
-          <img class="login__company-name-image" :src="Exewion" alt="">
+          <ExewionIcon class="login__company-name-image" />
         </div>
         <div class="login__description">crypto portfolio in 3 minutes</div>
         <router-link class="login__register" to="/register">
@@ -25,7 +25,7 @@
     </AppWrapper>
     <AppWrapper>
       <div class="login__form">
-        <img class="login__rocket" :src="Rocket" alt="">
+        <RocketIcon class="login__rocket" />
         <AppHeading class="login__register-title" uppercase>LOGIN</AppHeading>
         <div class="login__inputs">
           <AppInput :model-value="''" :label="'e-mail'" placeholder="Введите ваш E-mail"></AppInput>
@@ -43,10 +43,10 @@
 import AppButton from '@/components/buttons/AppButton.vue'
 import AppInput from '@/components/inputs/AppInput.vue'
 import AppWrapper from '@/components/wrapper/AppWrapper.vue'
-import Exewion from '@/assets/svg/exewion.svg'
-import Logo from '@/assets/svg/logo-svg.svg'
-import Rocket from '@/assets/svg/rocket.svg'
+import ExewionIcon from '@/components/icons/ExewionIcon.vue'
+import LogoIcon from '@/components/icons/LogoIcon.vue'
 import AppHeading from '@/components/heading/AppHeading.vue'
+import RocketIcon from '@/components/icons/RocketIcon.vue'
 
 </script>
 
@@ -65,29 +65,26 @@ import AppHeading from '@/components/heading/AppHeading.vue'
     }
 
     &__logo {
-      margin: 7.5rem 0 4.3rem 0;
+      margin: 20px 0 43px 0;
 
-    @media screen and (max-width: 768px) {
-      margin: 0 0 4.3rem 0;
-    }
-
-      &-img {
-        width: 24.2rem;
-
-        @media screen and (max-width: 768px) {
-          width: 8.2rem;
-        }
+      @media screen and (max-width: 768px) {
+        margin: 0 0 43px 0;
       }
     }
 
     &__company-name-image {
-      width: 24.2rem;
+      width: 100%;
+      height: 30px;
       margin: 0 0 1.5rem 0;
+
+      @media screen and (max-width: 768px) {
+        height: 30px;
+      }
     }
 
     &__description {
       margin: 0 0 6rem 0;
-      @include text(1.4rem, 2.2rem, 300);
+      @include text(14px, 22px, 300);
       letter-spacing: 1px;
       text-transform: uppercase;
       color: $white;
@@ -98,7 +95,7 @@ import AppHeading from '@/components/heading/AppHeading.vue'
     }
 
     &__register {
-      margin: 0 0 2.3rem 0;
+      margin: 0 0 23px 0;
     }
 
     &__register,
@@ -140,6 +137,7 @@ import AppHeading from '@/components/heading/AppHeading.vue'
       width: 51px;
       height: 73px;
       margin-bottom: 34px;
+      stroke: $white;
 
       @media screen and (max-width: 768px) {
         margin-bottom: 24px;
