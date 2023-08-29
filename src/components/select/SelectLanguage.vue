@@ -1,8 +1,9 @@
 <template>
   <div class="select-language" :tabindex="tabindex" @blur="open = false">
     <AppButton class="select-language__button" @onClick="open = !open" transparent>
-      <img class="select-language__flag" :src="flag" alt="">
+      <FlagIcon class="select-language__flag" />
       <p class="select-language__button-text">{{ selected }}</p>
+      <ArrowDownIcon />
       <img :src="arrow" alt="">
     </AppButton>
     <div
@@ -29,9 +30,9 @@
 </template>
 <script setup>
 import { ref, defineProps, defineEmits, onMounted } from 'vue'
-import flag from '@/assets/svg/flagRF.svg'
-import arrow from '@/assets/svg/arrow-down.svg'
 import AppButton from '@/components/buttons/AppButton.vue'
+import FlagIcon from '@/components/icons/FlagIcon.vue'
+import ArrowDownIcon from '../icons/ArrowDownIcon.vue'
 
 const props = defineProps({
   options: {
