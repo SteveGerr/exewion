@@ -4,7 +4,6 @@
       <FlagIcon class="select-language__flag" />
       <p class="select-language__button-text">{{ selected }}</p>
       <ArrowDownIcon />
-      <img :src="arrow" alt="">
     </AppButton>
     <div
       :class="['select-language__list', {
