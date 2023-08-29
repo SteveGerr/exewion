@@ -16,7 +16,7 @@
           </div>
           <div class="step-two__inputs">
             <p class="step-two__paragraph">добавьте эти IP адреса в настройках ваших api ключей дл большей безопасности</p>
-            <AppInput v-model="ipAddress" copy purple></AppInput>
+            <AppInput v-model="ipAddress" @onCopy="copyAddress" copy purple></AppInput>
             <p class="step-two__paragraph">API ключ <AppLink class="step-two__how-to-create" :href="'#'">(Как создать?)</AppLink></p>
             <AppInput placeholder="введите ваш api ключ" purple></AppInput>
             <p class="step-two__paragraph">добавьте эти IP адреса в настройках ваших api ключей дл большей безопасности</p>
@@ -40,10 +40,11 @@ import AppButton from '../buttons/AppButton.vue'
 
 const store = useStepsStore()
 
-const { changeStep } = store
-console.log(changeStep)
+const { changeStep, ipAddress } = store
 
-const ipAddress = '45.82.71.35'
+const copyAddress = () => {
+  navigator.clipboard.writeText(ipAddress)
+}
 
 </script>
 
@@ -58,6 +59,10 @@ const ipAddress = '45.82.71.35'
     height: 100%;
     padding: 22px 18px;
     color: $gray;
+
+    @media screen and (max-width: 768px) {
+      padding: 22px 5px;
+    }
 
     &__wrapper {
       display: flex;
