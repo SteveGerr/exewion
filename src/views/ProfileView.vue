@@ -4,7 +4,7 @@
       <AppHeading>Баланс и платежи</AppHeading>
       <div class="profile__row profile__row_first">
         <div class="profile__col">
-          <img class="profile__symbol" :src="symbol" alt="">
+          <SymbolCircleIcon class="profile__symbol" />
           <p class="profile__balance-value">{{ '0.0' }}</p>
         </div>
         <div class="profile__copy-address">
@@ -58,7 +58,7 @@
 import AppHeading from '@/components/heading/AppHeading.vue'
 import AppTable from '@/components/table/AppTable.vue'
 import AppWrapper from '@/components/wrapper/AppWrapper.vue'
-import symbol from '@/assets/svg/green-circle-T.svg'
+import SymbolCircleIcon from '@/components/icons/SymbolCircleIcon.vue'
 import AppButton from '@/components/buttons/AppButton.vue'
 import AppInput from '@/components/inputs/AppInput.vue'
 
