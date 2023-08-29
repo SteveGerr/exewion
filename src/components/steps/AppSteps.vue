@@ -32,6 +32,10 @@ defineProps({
       color: $lilac-light;
       white-space: nowrap;
 
+      @media screen and (max-width: 768px) {
+        @include text(12px, normal, 600);
+      }
+
       &.current {
         color: $white;
       }
