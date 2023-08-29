@@ -3,11 +3,11 @@
     <nav class="navbar">
       <div class="navbar__left">
         <AppButton @on-click="showMenu = !showMenu" class="navbar__burger" transparent>
-          <img :src="burger" alt="">
+          <BurgerIcon />
         </AppButton>
-        <img class="navbar__logo" :src="exewion" alt="">
+        <ExewionIcon class="navbar__logo" />
         <AppButton class="navbar__exit mobile" transparent>
-          <img class="navbar__exit-icon" :src="exitSvg" alt="">
+          <ExitIcon class="navbar__exit-icon" />
         </AppButton>
       </div>
       <div class="navbar__right">
@@ -16,39 +16,37 @@
         </AppWrapper>
         <AppWrapper>
           <AppButton class="navbar__notification" transparent>
-          <img v-if="false" :src="bell" alt="">
-          <img v-if="true" :src="bellAcive" alt="">
+          <BellIcon :active="true" />
           <p class="navbar__notification-count">11</p>
         </AppButton>
         </AppWrapper>
         <AppWrapper>
           <div class="navbar__balance">
             <div class="navbar__symbol">
-              <img :src="tSymbol" alt="">
+              <SymbolCircleIcon class="navbar__symbol-svg" />
             </div>
             <div class="navbar__balance-value">850 USDT</div>
             <AppButton class="navbar__balance-plus" transparent>
-              <img :src="plus" alt="">
+              <PlusGreenCircleIcon />
             </AppButton>
           </div>
         </AppWrapper>
         <AppWrapper class="navbar__status">
           <div class="navbar__status-wrapper">
             <div class="navbar__status-icon">
-              <img v-if="true" :src="man" alt="">
-              <img v-if="false" :src="manActive" alt="">
+              <ManIconDinamic :active="true" />
             </div>
             <div class="navbar__values">
               <p class="navbar__sum">00000500</p>
               <p class="navbar__growth">
-                <img :src="arrowsUp" alt="">
+                <ArrowsUpIcon class="navbar__growth-arrows" />
                 100
               </p>
             </div>
           </div>
         </AppWrapper>
         <AppButton class="navbar__exit" transparent>
-          <img class="navbar__exit-icon" :src="exitSvg" alt="">
+          <ExitIcon class="navbar__exit-icon" />
         </AppButton>
       </div>
     </nav>
@@ -59,16 +57,14 @@ import { ref } from 'vue'
 import AppButton from '@/components/buttons/AppButton.vue'
 import AppWrapper from '@/components/wrapper/AppWrapper.vue'
 import SelectLanguage from '@/components/select/SelectLanguage.vue'
-import exitSvg from '@/assets/svg/exit-icon.svg'
-import exewion from '@/assets/svg/exewion.svg'
-import burger from '@/assets/svg/burger.svg'
-import man from '@/assets/svg/man.svg'
-import manActive from '@/assets/svg/man-active.svg'
-import bell from '@/assets/svg/bell.svg'
-import bellAcive from '@/assets/svg/bell-active.svg'
-import tSymbol from '@/assets/svg/green-circle-T.svg'
-import plus from '@/assets/svg/green-circle-plus.svg'
-import arrowsUp from '@/assets/svg/green-arrows-up.svg'
+import ExewionIcon from '@/components/icons/ExewionIcon.vue'
+import PlusGreenCircleIcon from '@/components/icons/PlusGreenCircleIcon.vue'
+import ArrowsUpIcon from '@/components/icons/ArrowsUpIcon.vue'
+import BellIcon from '@/components/icons/BellIcon.vue'
+import SymbolCircleIcon from '@/components/icons/SymbolCircleIcon.vue'
+import ManIconDinamic from '@/components/icons/ManIconDinamic.vue'
+import ExitIcon from '@/components/icons/ExitIcon.vue'
+import BurgerIcon from '@/components/icons/BurgerIcon.vue'
 
 const showMenu = ref(false)
 
@@ -211,6 +207,7 @@ const showMenu = ref(false)
 
     &__growth {
       display: flex;
+      align-items: center;
       flex-wrap: nowrap;
       @include text(16px, 25px, 600);
       letter-spacing: 0.286px;
@@ -219,6 +216,16 @@ const showMenu = ref(false)
 
       @media screen and (max-width: 768px) {
        @include text(12px, 15px, 400);
+      }
+
+      &-arrows {
+        margin: 3px 0 0 0;
+
+        @media screen and (max-width: 768px) {
+          margin: 1px 0 0 0;
+          width: 12px;
+          height: 15px;
+        }
       }
     }
 
@@ -237,13 +244,15 @@ const showMenu = ref(false)
       justify-content: center;
       align-items: center;
 
-      img {
+      &-svg {
         width: 45px;
+        height: 45px;
       }
 
       @media screen and (max-width: 768px) {
-        img {
+        &-svg {
           width: 25px;
+          height: 25px;
         }
       }
     }
@@ -269,7 +278,9 @@ const showMenu = ref(false)
     }
 
     &__balance-plus {
-      max-width: 12px;
+      @media screen and (max-width: 768px) {
+        max-width: 12px;
+      }
     }
 
   }
