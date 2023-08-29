@@ -6,15 +6,18 @@
           <img :src="burger" alt="">
         </AppButton>
         <img class="navbar__logo" :src="exewion" alt="">
+        <AppButton class="navbar__exit mobile" transparent>
+          <img class="navbar__exit-icon" :src="exitSvg" alt="">
+        </AppButton>
       </div>
-      <div :class="['navbar__right', {show: showMenu}]">
+      <div class="navbar__right">
         <AppWrapper class="navbar__select-langauge">
           <SelectLanguage :options="['ru', 'eng']"></SelectLanguage>
         </AppWrapper>
         <AppWrapper>
           <AppButton class="navbar__notification" transparent>
-          <img v-if="false" class="navbar__exit-icon" :src="bell" alt="">
-          <img v-if="true" class="navbar__exit-icon" :src="bellAcive" alt="">
+          <img v-if="false" :src="bell" alt="">
+          <img v-if="true" :src="bellAcive" alt="">
           <p class="navbar__notification-count">11</p>
         </AppButton>
         </AppWrapper>
@@ -82,7 +85,7 @@ const showMenu = ref(false)
 
     @media screen and (max-width: 768px) {
       flex-direction: column;
-      padding: 12px 24px;
+      padding: 12px;
     }
 
     &__left {
@@ -91,6 +94,7 @@ const showMenu = ref(false)
       gap: 20px;
 
       @media screen and (max-width: 768px) {
+        justify-content: space-between;
         width: 100%;
         margin: 0 0 20px 0;
       }
@@ -101,8 +105,8 @@ const showMenu = ref(false)
       gap: 13px;
 
       @media screen and (max-width: 768px) {
-        display: none;
-        flex-direction: column;
+        justify-content: center;
+        gap: 7px;
 
         &.show {
           display: flex;
@@ -129,10 +133,35 @@ const showMenu = ref(false)
         width: 29px;
         height: 16px;
       }
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
     }
 
     &__exit {
       padding: 10px;
+      @media screen and (max-width: 768px) {
+        display: none;
+        max-width: 60px;
+      }
+
+      &.mobile {
+        display: none;
+
+        @media screen and (max-width: 768px) {
+          display: flex;
+          justify-content: flex-end;
+          max-width: 50px;
+        }
+      }
+    }
+
+    &__exit-icon {
+      @media screen and (max-width: 768px) {
+        width: 20px;
+      }
+
     }
 
     &__status {
@@ -141,12 +170,20 @@ const showMenu = ref(false)
 
    &__select-langauge {
     padding: 8px 17px;
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
    }
 
    &__notification-count {
     margin: 0 0 0 4px;
     @include text(16px, 24px, 600);
     letter-spacing: -0.3px;
+
+    @media screen and (max-width: 768px) {
+      @include text(12px, 14px, 600);
+    }
    }
 
     &__status-icon {
@@ -158,6 +195,12 @@ const showMenu = ref(false)
       margin: 0 10px 0 0;
       border-radius: 50%;
       background-color: $purple-light;
+
+      @media screen and (max-width: 768px) {
+        width: 27px;
+        height: 27px;
+        margin: 0 5px 0 0;
+      }
     }
 
     &__status-wrapper {
@@ -173,12 +216,20 @@ const showMenu = ref(false)
       letter-spacing: 0.286px;
       color: $white;
       white-space: nowrap;
+
+      @media screen and (max-width: 768px) {
+       @include text(12px, 15px, 400);
+      }
     }
 
     &__sum {
       @include text(17px, 23px, 400);
       letter-spacing: -0.336px;
       color: #6B4F9C;
+
+      @media screen and (max-width: 768px) {
+       @include text(12px, 13px, 400);
+      }
     }
 
     &__symbol {
@@ -188,6 +239,12 @@ const showMenu = ref(false)
 
       img {
         width: 45px;
+      }
+
+      @media screen and (max-width: 768px) {
+        img {
+          width: 25px;
+        }
       }
     }
 
@@ -205,10 +262,14 @@ const showMenu = ref(false)
       letter-spacing: -0.3px;
       color: $white;
       white-space: nowrap;
+
+      @media screen and (max-width: 768px) {
+        @include text(12px, 14px, 600);
+      }
     }
 
     &__balance-plus {
-      max-width: 14px;
+      max-width: 12px;
     }
 
   }
