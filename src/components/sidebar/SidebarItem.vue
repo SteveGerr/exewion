@@ -1,7 +1,7 @@
 <template>
   <div :class="['sidebar-item', {'active': active}]">
     <div class="sidebar-item__icon">
-      <slot></slot>
+      <slot class="svg" ></slot>
     </div>
   </div>
 </template>
@@ -48,6 +48,10 @@ defineProps({
         right: 0;
         width: 50px;
       }
+    }
+
+    svg {
+      stroke: $white;
     }
   }
 
