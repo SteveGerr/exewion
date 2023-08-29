@@ -4,12 +4,12 @@
       <p class="circle-count__value">{{ value }}</p>
       <p class="circle-count__text">монет</p>
     </div>
-    <img :src="circleCount" alt="">
+    <CircleCountIcon class="circle-count__img" />
   </div>
 </template>
 <script setup>
 import { defineProps } from 'vue'
-import circleCount from '@/assets/svg/circle-count.svg'
+import CircleCountIcon from '@/components/icons/CircleCountIcon.vue'
 
 defineProps({
   value: Number
@@ -26,7 +26,7 @@ defineProps({
   border-radius: 50%;
   position: relative;
 
-  img {
+  &__img {
     position: absolute;
     top: 0;
     right: 0;
