@@ -1,7 +1,7 @@
 <template>
   <div class="select" :tabindex="tabindex" @blur="open = false">
     <div class="select__selected" :class="{ open: open }" @click="open = !open">
-      <img class="select__arrow" :src="arrow" alt="">
+      <ArrowDownIcon class="select__arrow" />
       {{ selected }}
     </div>
     <div class="select__options" :class="{ selectHide: !open }">
@@ -22,7 +22,7 @@
 </template>
 <script setup>
 import { defineProps, ref } from 'vue'
-import arrow from '@/assets/svg/arrow-down.svg'
+import ArrowDownIcon from '@/components/icons/ArrowDownIcon.vue'
 
 const props = defineProps({
   options: {
