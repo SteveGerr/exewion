@@ -1,10 +1,16 @@
-
+import socketService from '@/websockets/socket.service'
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 export const useStepsStore = defineStore('steps', () => {
   const currentStep = ref(1)
   const rangeValue = ref(1)
   const ipAddress = ref('45.82.71.35')
+  const invalidLogin = ref(false)
+  const credentials = ref({
+    login: '',
+    password: '',
+    needRemember: false
+  })
   const coinsList = ref([
     {
       id: 1,
@@ -51,11 +57,36 @@ export const useStepsStore = defineStore('steps', () => {
     selectedCoins.value = selectedCoins.value.filter((coin) => coin.id !== id)
   }
 
+  const setCredentials = (fieldsData) => {
+    credentials.value.login = fieldsData.login
+    credentials.value.password = fieldsData.password
+  }
+
+  const requestLogin = (credentials) => {
+    console.log(credentials)
+    socketService.request('auth', credentials).then((data) => {
+      localStorage.setItem('token', data.remember_token)
+      invalidLogin.value = false
+    })
+      .catch((error) => {
+        try {
+          console.log(error)
+          invalidLogin.value = true
+        } catch (error) {
+
+        }
+      })
+  }
+
   return {
     removeSlelectedCoins,
     changeBalanceRange,
     selectedCoins,
+    setCredentials,
+    invalidLogin,
+    requestLogin,
     currentStep,
+    credentials,
     changeStep,
     rangeValue,
     ipAddress,
