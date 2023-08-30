@@ -16,7 +16,6 @@ export default class Encryption {
     }
 
     initBase () {
-      console.log(Buffer)
       this.init(Buffer.from(this.base.substr(0, 64), 'hex'), this.base.substr(64))
     }
 
