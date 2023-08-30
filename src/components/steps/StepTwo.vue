@@ -40,11 +40,7 @@ import AppButton from '../buttons/AppButton.vue'
 
 const store = useStepsStore()
 
-const { changeStep, ipAddress } = store
-
-const copyAddress = () => {
-  navigator.clipboard.writeText(ipAddress)
-}
+const { changeStep, ipAddress, copyAddress } = store
 
 </script>
 
