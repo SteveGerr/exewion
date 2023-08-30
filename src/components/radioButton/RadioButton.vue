@@ -37,6 +37,7 @@ const onChange = (e) => {
       background-color: $background-color;
       border: $border-dark-purple;
       border-radius: 10px;
+      cursor: pointer;
     }
 
     input {
