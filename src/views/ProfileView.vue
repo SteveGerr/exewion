@@ -27,18 +27,21 @@
       <form class="profile__form" @submit.prevent>
         <div class="profile__form-inputs">
           <AppInput
+            v-model="passwords.currentPassword"
             placeholder="Введите ваш пароль"
             label="текущий пароль"
             purple
           >
           </AppInput>
           <AppInput
+            v-model="passwords.newPassword"
             placeholder="Введите новый пароль"
             label="новый пароль"
             purple
           >
           </AppInput>
           <AppInput
+            v-model="passwords.newPasswordAgain"
             placeholder="Введите новый пароль еще раз"
             label="повторите новый пароль"
             purple
@@ -46,8 +49,8 @@
           </AppInput>
         </div>
         <div class="profile__form-buttons">
-          <AppButton class="profile__save" middle green>СОХРАНИТЬ ИЗМЕНЕНИЯ</AppButton>
-          <AppButton class="profile__cancel" middle orange>ОТМЕНИТЬ</AppButton>
+          <AppButton class="profile__save" @on-click="changePass(passwords)" middle green>СОХРАНИТЬ ИЗМЕНЕНИЯ</AppButton>
+          <AppButton class="profile__cancel" @on-click="reset" middle orange>ОТМЕНИТЬ</AppButton>
         </div>
       </form>
     </AppWrapper>
@@ -55,6 +58,8 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import { useStepsStore } from '@/store/store'
 import AppHeading from '@/components/heading/AppHeading.vue'
 import AppTable from '@/components/table/AppTable.vue'
 import AppWrapper from '@/components/wrapper/AppWrapper.vue'
@@ -62,11 +67,27 @@ import SymbolCircleIcon from '@/components/icons/SymbolCircleIcon.vue'
 import AppButton from '@/components/buttons/AppButton.vue'
 import AppInput from '@/components/inputs/AppInput.vue'
 
+const store = useStepsStore()
+
+const { changePass } = store
+
 const keyValues = ['date', 'type', 'sum']
 const datas = [
   { date: '19/08/2023 12:00', type: 'Ввод', sum: '12220 USDT' },
   { date: '19/08/2023 12:00', type: 'Ребалансировка', sum: '12220 USDT' }
 ]
+
+const passwords = ref({
+  currentPassword: '',
+  newPassword: '',
+  newPasswordAgain: ''
+})
+
+const reset = () => {
+  passwords.value.currentPassword = ''
+  passwords.value.newPassword = ''
+  passwords.value.newPasswordAgain = ''
+}
 
 </script>
 
