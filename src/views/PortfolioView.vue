@@ -48,8 +48,8 @@
         </div>
       </div>
       <div class="portfolio__buttons">
-        <AppButton green>РЕБАЛАНСИРОВАТЬ</AppButton>
-        <AppButton orange>ПРОДАТЬ</AppButton>
+        <AppButton @on-click="rebalance" green>РЕБАЛАНСИРОВАТЬ</AppButton>
+        <AppButton @on-click="sell" orange>ПРОДАТЬ</AppButton>
       </div>
     </AppWrapper>
     <AppWrapper class="portfolio__wrapper">
@@ -89,6 +89,8 @@ const {
   portfolioData,
   costForecast
 } = storeToRefs(store)
+
+const { rebalance, sell } = store
 
 const keyValues = ['hash', 'coinName', 'percent', 'sum']
 
