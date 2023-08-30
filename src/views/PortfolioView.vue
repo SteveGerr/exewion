@@ -5,7 +5,7 @@
       <div class="portfolio__widgets">
         <AppWidget
           :heading="'выделенный баланс'"
-          :number="1000"
+          :number="allocatedBalance"
           >
           <template #icon>
             <WalletIcon class="portfolio__icon"></WalletIcon>
@@ -13,7 +13,7 @@
         </AppWidget>
         <AppWidget
           :heading="'стоимость портфеля сегодня'"
-          :number="1020"
+          :number="portfolioCost"
           >
           <template #icon>
             <DiagrammIcon class="portfolio__diagramm-icon"></DiagrammIcon>
@@ -22,7 +22,7 @@
         <AppWidget
           :heading="'прирост баланса'"
           :number="12"
-          :percent="12"
+          :percent="`+${balanceGrowth}`"
           purple
           >
           <template #icon>
@@ -31,7 +31,7 @@
         </AppWidget>
         <AppWidget
           :heading="'прогноз стоимости через год'"
-          :number="1000"
+          :number="costForecast"
           green
           >
           <template #icon>
@@ -41,7 +41,7 @@
       </div>
       <div class="portfolio__rebalancing">
         <p class="portfolio__label">Дата следующей ребалансировки</p>
-        <ProgressBar simple :value="50"></ProgressBar>
+        <ProgressBar simple :value="portfolioDateProgress"></ProgressBar>
         <div class="portfolio__rebalancing-dates">
           <div class="portfolio__rebalancing-date">{{ '19/08/2023' }}</div>
           <div class="portfolio__rebalancing-days">{{ 26 }} д. осталось</div>
@@ -55,10 +55,10 @@
     <AppWrapper class="portfolio__wrapper">
       <AppHeading class="portfolio__heading">Портфель</AppHeading>
       <div class="portfolio__table-container">
-        <CircleCount class="portfolio__circle-count" :value="30"></CircleCount>
+        <CircleCount class="portfolio__circle-count" :value="portfolioCoinsValue"></CircleCount>
         <div class="portfolio__tables">
-          <AppTable class="portfolio__first-table" :headers="['#', 'монета', '%', 'сумма']" :data="datas" :keys="keyValues"></AppTable>
-          <AppTable :headers="['#', 'монета', '%', 'сумма']" :data="datasSecond" :keys="keyValues"></AppTable>
+          <AppTable class="portfolio__first-table" :headers="['#', 'монета', '%', 'сумма']" :data="portfolioData.table1" :keys="keyValues"></AppTable>
+          <AppTable :headers="['#', 'монета', '%', 'сумма']" :data="portfolioData.table2" :keys="keyValues"></AppTable>
         </div>
       </div>
     </AppWrapper>
@@ -66,6 +66,7 @@
 </template>
 
 <script setup>
+import { storeToRefs } from 'pinia'
 import AppWrapper from '@/components/wrapper/AppWrapper.vue'
 import AppWidget from '@/components/widget/AppWidget.vue'
 import AppHeading from '@/components/heading/AppHeading.vue'
@@ -77,19 +78,19 @@ import AppButton from '@/components/buttons/AppButton.vue'
 import CircleCount from '@/components/circleCount/CircleCount.vue'
 import AppTable from '@/components/table/AppTable.vue'
 
+import { useStepsStore } from '@/store/store'
+const store = useStepsStore()
+const {
+  portfolioDateProgress,
+  portfolioCoinsValue,
+  allocatedBalance,
+  portfolioCost,
+  balanceGrowth,
+  portfolioData,
+  costForecast
+} = storeToRefs(store)
+
 const keyValues = ['hash', 'coinName', 'percent', 'sum']
-const datas = [
-  { hash: '*', coinName: 'BTC', percent: '10%', sum: '0.01892' },
-  { hash: '*', coinName: 'BTC', percent: '10%', sum: '0.01892' },
-  { hash: '*', coinName: 'BTC', percent: '10%', sum: '0.01892' },
-  { hash: '*', coinName: 'BTC', percent: '10%', sum: '0.01892' }
-]
-const datasSecond = [
-  { hash: '20', coinName: 'BTC', percent: '20%', sum: '0.01892' },
-  { hash: '21', coinName: 'BTC', percent: '20%', sum: '0.01892' },
-  { hash: '22', coinName: 'BTC', percent: '20%', sum: '0.01892' },
-  { hash: '23', coinName: 'BTC', percent: '20%', sum: '0.01892' }
-]
 
 </script>
 
