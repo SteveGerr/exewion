@@ -6,7 +6,7 @@
         </header>
         <div class="step-four__available">
           <p class="step-four__label">доступно USDT на бирже</p>
-          <p class="step-four__balance-value">{{ 1000 }} USDT</p>
+          <p class="step-four__balance-value">{{ usdtValue }} USDT</p>
         </div>
         <div class="step-four__balance-choice">
           <p class="step-four__label">выберите рабочий баланс</p>
@@ -21,7 +21,7 @@
           </AppRange>
           <div class="step-four__enter-balance">
             <AppInput
-              :model-value="rangeValue"
+              :model-value="rangeValue.toString()"
               @input="changeBalanceRange"
               type="number"
               purple
@@ -42,7 +42,7 @@
         <div class="step-four__selected-coins">
           <AppBadge v-for="coin in selectedCoins" :key="coin.id" @remove="removeSlelectedCoins(coin.id)">{{ coin.name }}</AppBadge>
         </div>
-        <AppButton class="step-four__button" @on-click="changeStep" large green>СОЗДАТЬ</AppButton>
+        <AppButton class="step-four__button" @on-click="createPortfolio" large green>СОЗДАТЬ</AppButton>
       </div>
   </div>
 </template>
@@ -59,10 +59,9 @@ import AppBadge from '../badge/AppBadge.vue'
 
 const store = useStepsStore()
 
-const { coinsList, selectedCoins, rangeValue } = storeToRefs(store)
-console.log(selectedCoins)
+const { coinsList, selectedCoins, rangeValue, usdtValue } = storeToRefs(store)
 
-const { changeStep, addCoin, changeBalanceRange, removeSlelectedCoins } = store
+const { createPortfolio, addCoin, changeBalanceRange, removeSlelectedCoins } = store
 
 </script>
 
