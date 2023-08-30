@@ -1,6 +1,7 @@
 import socketService from '@/websockets/socket.service'
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import router from '@/router'
 export const useStepsStore = defineStore('steps', () => {
   const currentStep = ref(1)
   const rangeValue = ref(1)
@@ -63,10 +64,10 @@ export const useStepsStore = defineStore('steps', () => {
   }
 
   const requestLogin = (credentials) => {
-    console.log(credentials)
     socketService.request('auth', credentials).then((data) => {
       localStorage.setItem('token', data.remember_token)
       invalidLogin.value = false
+      router.push('/profile')
     })
       .catch((error) => {
         try {
@@ -76,6 +77,11 @@ export const useStepsStore = defineStore('steps', () => {
 
         }
       })
+  }
+
+  const onLogOut = () => {
+    localStorage.removeItem('token')
+    router.push('/login')
   }
 
   const copyAddress = async () => {
@@ -100,6 +106,7 @@ export const useStepsStore = defineStore('steps', () => {
     rangeValue,
     ipAddress,
     coinsList,
+    onLogOut,
     addCoin
   }
 })
