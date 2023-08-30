@@ -16,6 +16,7 @@
         :pattern="pattern"
         :min="min"
         :inputmode="inputmode"
+        :tabindex="tabindex"
       />
       <AppButton
         v-if="copy"
@@ -45,7 +46,8 @@ defineProps({
   copy: Boolean,
   pattern: String,
   min: Number,
-  inputmode: String
+  inputmode: String,
+  tabindex: Number
 })
 
 const emit = defineEmits(['update:modelValue'])

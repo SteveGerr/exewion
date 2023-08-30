@@ -28,9 +28,9 @@
         <RocketIcon class="login__rocket" />
         <AppHeading class="login__register-title" uppercase>LOGIN</AppHeading>
         <div class="login__inputs">
-          <AppInput :model-value="''" :label="'e-mail'" placeholder="Введите ваш E-mail"></AppInput>
-          <AppInput :model-value="''" :label="'Пароль'" forgot placeholder="Введите ваш пароль" type="password"></AppInput>
-          <AppButton class="login__apply" green middle>
+          <AppInput v-model="credentials.login" :label="'e-mail'" :tabindex="1" placeholder="Введите ваш E-mail"></AppInput>
+          <AppInput v-model="credentials.password" :label="'Пароль'" :tabindex="2" forgot placeholder="Введите ваш пароль" type="password"></AppInput>
+          <AppButton @on-click="onLogin" class="login__apply" green middle>
             ПОДТВЕРДИТЬ
           </AppButton>
         </div>
@@ -40,6 +40,8 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import { useStepsStore } from '@/store/store'
 import AppButton from '@/components/buttons/AppButton.vue'
 import AppInput from '@/components/inputs/AppInput.vue'
 import AppWrapper from '@/components/wrapper/AppWrapper.vue'
@@ -47,6 +49,23 @@ import ExewionIcon from '@/components/icons/ExewionIcon.vue'
 import LogoIcon from '@/components/icons/LogoIcon.vue'
 import AppHeading from '@/components/heading/AppHeading.vue'
 import RocketIcon from '@/components/icons/RocketIcon.vue'
+
+const store = useStepsStore()
+
+const { requestLogin } = store
+
+const credentials = ref({
+  login: '',
+  password: ''
+})
+
+const onLogin = () => {
+  requestLogin(credentials)
+}
+
+// UyaPJRWJz80ylmJXEBshWH/cH+vWWA0JQrsrFn+6M11lT23VOzQCFA==
+// test@test.ru
+// test123
 
 </script>
 
