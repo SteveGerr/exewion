@@ -87,8 +87,9 @@ const sidebarItems = [
 
       @media screen and (max-width: 768px) {
         height: auto;
-        padding: 0 5px;
+        padding: 0 5px 80px 5px;
         order: 1;
+        z-index: 1;
       }
     }
 
@@ -100,8 +101,11 @@ const sidebarItems = [
         height: auto;
         width: 100%;
         margin: 0;
+        position: fixed;
+        bottom: 0;
         border-radius: 0;
         order: 2;
+        z-index: 3;
       }
       &.app-wrapper {
         padding: 8px 11px;
