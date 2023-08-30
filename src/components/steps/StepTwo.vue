@@ -7,10 +7,10 @@
         <form class="step-two__form" @submit.prevent>
           <p class="step-two__paragraph">Выберите биржу</p>
           <div class="step-two__stock-choice">
-            <RadioButton class="step-two__radio-button" :id="2" @onChange="onChange" checked>
+            <RadioButton @on-change="onSelectStock" :value="'binance'" class="step-two__radio-button" :id="2" checked>
               <img :src="binance" alt="">
             </RadioButton>
-            <RadioButton class="step-two__radio-button" :id="1" @onChange="onChange">
+            <RadioButton @on-change="onSelectStock" :value="'bybit'" class="step-two__radio-button" :id="1">
               <img :src="Bybit" alt="">
             </RadioButton>
           </div>
@@ -18,10 +18,10 @@
             <p class="step-two__paragraph">добавьте эти IP адреса в настройках ваших api ключей дл большей безопасности</p>
             <AppInput v-model="ipAddress" @onCopy="copyAddress" copy purple></AppInput>
             <p class="step-two__paragraph">API ключ <AppLink class="step-two__how-to-create" :href="'#'">(Как создать?)</AppLink></p>
-            <AppInput placeholder="введите ваш api ключ" purple></AppInput>
+            <AppInput v-model="data.key" placeholder="введите ваш api ключ" purple></AppInput>
             <p class="step-two__paragraph">добавьте эти IP адреса в настройках ваших api ключей дл большей безопасности</p>
-            <AppInput placeholder="введите ваш секретный ключ" purple></AppInput>
-            <AppButton class="step-two__confirm" @onClick="changeStep" large green>CONFIRM</AppButton>
+            <AppInput v-model="data.secret" placeholder="введите ваш секретный ключ" purple></AppInput>
+            <AppButton class="step-two__confirm" @onClick="joinToMarket(data)" large green>CONFIRM</AppButton>
           </div>
         </form>
       </div>
@@ -29,6 +29,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { useStepsStore } from '@/store/store'
 import AppHeading from '../heading/AppHeading.vue'
 import AppInput from '@/components/inputs/AppInput.vue'
@@ -40,7 +41,17 @@ import AppButton from '../buttons/AppButton.vue'
 
 const store = useStepsStore()
 
-const { changeStep, ipAddress, copyAddress } = store
+const { ipAddress, copyAddress, joinToMarket } = store
+
+const onSelectStock = (e) => {
+  data.value.market = e.target.value
+}
+
+const data = ref({
+  market: 'binance',
+  key: '',
+  secret: ''
+})
 
 </script>
 
