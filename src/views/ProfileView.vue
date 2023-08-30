@@ -5,7 +5,7 @@
       <div class="profile__row profile__row_first">
         <div class="profile__col">
           <SymbolCircleIcon class="profile__symbol" />
-          <p class="profile__balance-value">{{ '0.0' }}</p>
+          <p class="profile__balance-value">{{ balanceValue }}</p>
         </div>
         <div class="profile__copy-address">
           <AppButton middle green>КОПИРОВАТЬ АДРЕС</AppButton>
@@ -15,7 +15,7 @@
       <div class="profile__row">
         <AppTable
           :headers="['дата и время', 'тип', 'колличество']"
-          :data="datas"
+          :data="balanceHistoryData"
           :keys="keyValues"
           :td-class="'table__td'"
         >
@@ -59,6 +59,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { storeToRefs } from 'pinia'
 import { useStepsStore } from '@/store/store'
 import AppHeading from '@/components/heading/AppHeading.vue'
 import AppTable from '@/components/table/AppTable.vue'
@@ -70,12 +71,10 @@ import AppInput from '@/components/inputs/AppInput.vue'
 const store = useStepsStore()
 
 const { changePass } = store
+const { balanceHistoryData, balanceValue } = storeToRefs(store)
 
+// ключи таблицы, нужны для итерации
 const keyValues = ['date', 'type', 'sum']
-const datas = [
-  { date: '19/08/2023 12:00', type: 'Ввод', sum: '12220 USDT' },
-  { date: '19/08/2023 12:00', type: 'Ребалансировка', sum: '12220 USDT' }
-]
 
 const passwords = ref({
   currentPassword: '',
