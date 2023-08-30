@@ -63,7 +63,7 @@ export const useStepsStore = defineStore('steps', () => {
     credentials.value.password = fieldsData.password
   }
 
-  const requestLogin = (credentials) => {
+  const onLogIn = (credentials) => {
     socketService.request('auth', credentials).then((data) => {
       localStorage.setItem('token', data.remember_token)
       invalidLogin.value = false
@@ -98,7 +98,7 @@ export const useStepsStore = defineStore('steps', () => {
     selectedCoins,
     setCredentials,
     invalidLogin,
-    requestLogin,
+    onLogIn,
     copyAddress,
     currentStep,
     credentials,
