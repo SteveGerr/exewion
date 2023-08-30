@@ -6,7 +6,7 @@
           <BurgerIcon />
         </AppButton>
         <ExewionIcon class="navbar__logo" />
-        <AppButton class="navbar__exit mobile" transparent>
+        <AppButton class="navbar__exit mobile" @on-click="onLogOut" transparent>
           <ExitIcon class="navbar__exit-icon" />
         </AppButton>
       </div>
@@ -17,7 +17,7 @@
         <AppWrapper>
           <AppButton class="navbar__notification" transparent>
           <BellIcon :active="true" />
-          <p class="navbar__notification-count">11</p>
+          <p class="navbar__notification-count">{{ notifications }}</p>
         </AppButton>
         </AppWrapper>
         <AppWrapper>
@@ -25,7 +25,7 @@
             <div class="navbar__symbol">
               <SymbolCircleIcon class="navbar__symbol-svg" />
             </div>
-            <div class="navbar__balance-value">850 USDT</div>
+            <div class="navbar__balance-value">{{ balanceValue }} USDT</div>
             <AppButton class="navbar__balance-plus" transparent>
               <PlusGreenCircleIcon />
             </AppButton>
@@ -66,8 +66,13 @@ import SymbolCircleIcon from '@/components/icons/SymbolCircleIcon.vue'
 import ManIconDinamic from '@/components/icons/ManIconDinamic.vue'
 import ExitIcon from '@/components/icons/ExitIcon.vue'
 import BurgerIcon from '@/components/icons/BurgerIcon.vue'
+import { storeToRefs } from 'pinia'
 
 const { onLogOut } = useStepsStore()
+
+const store = useStepsStore()
+
+const { notifications, balanceValue } = storeToRefs(store)
 
 const showMenu = ref(false)
 
