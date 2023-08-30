@@ -17,6 +17,8 @@
         :min="min"
         :inputmode="inputmode"
         :tabindex="tabindex"
+        :valid="valid"
+        :validText="validText"
       />
       <AppButton
         v-if="copy"
@@ -28,6 +30,7 @@
         copy
       </AppButton>
     </label>
+    <span v-if="!valid" class="app-input__valid-text">{{ validText }}</span>
   </div>
 </template>
 
@@ -47,7 +50,9 @@ defineProps({
   pattern: String,
   min: Number,
   inputmode: String,
-  tabindex: Number
+  tabindex: Number,
+  valid: Boolean,
+  validText: String
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -125,6 +130,14 @@ const updateValue = (e) => {
     bottom: 1px;
     right: 0;
     max-width: 128px;
+  }
+
+  &__valid-text {
+    position: absolute;
+    bottom: -15px;
+    left: 10px;
+    @include text(12px, normal, 400);
+    color: crimson;
   }
 }
 
