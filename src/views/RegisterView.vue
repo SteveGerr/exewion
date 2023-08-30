@@ -26,10 +26,18 @@
         <RocketIcon class="login__rocket" />
         <AppHeading class="login__register-title" uppercase>register</AppHeading>
         <div class="login__inputs">
-          <AppInput :model-value="''" :label="'e-mail'" placeholder="Введите ваш E-mail"></AppInput>
-          <AppInput :model-value="''" :label="'Пароль'" placeholder="Введите ваш пароль" type="password"></AppInput>
-          <AppInput :model-value="''" :label="'ПОВТОРИТЕ Пароль'" placeholder="Введите ваш пароль еще раз" type="password"></AppInput>
-          <AppButton class="login__apply" green middle>
+          <AppInput v-model="user.email" :label="'e-mail'" placeholder="Введите ваш E-mail"></AppInput>
+          <AppInput v-model="user.password" :label="'Пароль'" placeholder="Введите ваш пароль" type="password"></AppInput>
+          <AppInput
+            v-model="user.repeatPassword"
+            :label="'ПОВТОРИТЕ Пароль'"
+            :valid="checkPassword"
+            :valid-text="'Пароли не совпадают'"
+            placeholder="Введите ваш пароль еще раз"
+            type="password"
+            >
+          </AppInput>
+          <AppButton class="login__apply" @on-click="onRegister(user)" :disabled="!checkPassword" green middle>
             ПОДТВЕРДИТЬ
           </AppButton>
         </div>
@@ -39,6 +47,8 @@
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
+import { useStepsStore } from '@/store/store'
 import AppButton from '@/components/buttons/AppButton.vue'
 import AppInput from '@/components/inputs/AppInput.vue'
 import AppWrapper from '@/components/wrapper/AppWrapper.vue'
@@ -46,6 +56,19 @@ import LogoIcon from '@/components/icons/LogoIcon.vue'
 import RocketIcon from '@/components/icons/RocketIcon.vue'
 import AppHeading from '@/components/heading/AppHeading.vue'
 import ExewionIcon from '@/components/icons/ExewionIcon.vue'
+
+const store = useStepsStore()
+
+const { onRegister } = store
+
+// eslint-disable-next-line no-unused-vars
+const checkPassword = computed(() => user.value.password === user.value.repeatPassword)
+
+const user = ref({
+  email: '',
+  password: '',
+  repeatPassword: ''
+})
 
 </script>
 
