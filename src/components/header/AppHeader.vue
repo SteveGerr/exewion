@@ -45,7 +45,7 @@
             </div>
           </div>
         </AppWrapper>
-        <AppButton class="navbar__exit" transparent>
+        <AppButton class="navbar__exit" @on-click="onLogOut" transparent>
           <ExitIcon class="navbar__exit-icon" />
         </AppButton>
       </div>
@@ -54,6 +54,7 @@
 </template>
 <script setup>
 import { ref } from 'vue'
+import { useStepsStore } from '@/store/store'
 import AppButton from '@/components/buttons/AppButton.vue'
 import AppWrapper from '@/components/wrapper/AppWrapper.vue'
 import SelectLanguage from '@/components/select/SelectLanguage.vue'
@@ -65,6 +66,8 @@ import SymbolCircleIcon from '@/components/icons/SymbolCircleIcon.vue'
 import ManIconDinamic from '@/components/icons/ManIconDinamic.vue'
 import ExitIcon from '@/components/icons/ExitIcon.vue'
 import BurgerIcon from '@/components/icons/BurgerIcon.vue'
+
+const { onLogOut } = useStepsStore()
 
 const showMenu = ref(false)
 
