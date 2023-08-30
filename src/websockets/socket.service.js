@@ -73,7 +73,7 @@ export default new class Connection extends EventEmitter {
     }
 
     request (method, params = {}) {
-      console.log(method, params)
+      // console.log(method, params)
       return new Promise((resolve, reject) => {
         const msg = {}
         msg.qid = ++this.queryId
