@@ -103,8 +103,8 @@ export const useStepsStore = defineStore('steps', () => {
   const onLogIn = (credentials) => {
     socketService.request('auth', credentials).then((data) => {
       localStorage.setItem('token', data.remember_token)
-      invalidLogin.value = false
       router.push('/profile')
+      invalidLogin.value = false
     })
       .catch((error) => {
         try {
@@ -121,11 +121,13 @@ export const useStepsStore = defineStore('steps', () => {
       if (data.data === true) {
         localStorage.removeItem('token')
         router.push('/login')
-        console.log(data)
       }
     }).catch((error) => {
       console.log(error)
     })
+    // Когда будет работать socketService удалить
+    localStorage.removeItem('token')
+    router.push('/login')
   }
 
   const onRegister = (data) => {
