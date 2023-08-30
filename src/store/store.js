@@ -78,6 +78,14 @@ export const useStepsStore = defineStore('steps', () => {
       })
   }
 
+  const copyAddress = async () => {
+    try {
+      await navigator.clipboard.writeText(ipAddress.value)
+    } catch (error) {
+      console.log('Cannot copy')
+    }
+  }
+
   return {
     removeSlelectedCoins,
     changeBalanceRange,
@@ -85,6 +93,7 @@ export const useStepsStore = defineStore('steps', () => {
     setCredentials,
     invalidLogin,
     requestLogin,
+    copyAddress,
     currentStep,
     credentials,
     changeStep,
