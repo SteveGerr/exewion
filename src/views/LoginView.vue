@@ -3,9 +3,7 @@
     <AppWrapper>
       <div class="login__buttons">
         <div class="login__logo">
-          <RouterLink to="/start">
-            <LogoIcon class="login__logo-img" />
-          </RouterLink>
+          <LogoIcon class="login__logo-img" />
         </div>
         <div class="login__company-name">
           <ExewionIcon class="login__company-name-image" />
@@ -52,7 +50,7 @@ import RocketIcon from '@/components/icons/RocketIcon.vue'
 
 const store = useStepsStore()
 
-const { requestLogin } = store
+const { onLogIn } = store
 
 const credentials = ref({
   login: '',
@@ -60,7 +58,14 @@ const credentials = ref({
 })
 
 const onLogin = () => {
-  requestLogin(credentials)
+  if (credentials.value.password.length > 0 && credentials.value.login.length > 0) {
+    onLogIn({
+      login: credentials.value.login,
+      password: credentials.value.password
+    })
+    credentials.value.login = ''
+    credentials.value.password = ''
+  }
 }
 
 // UyaPJRWJz80ylmJXEBshWH/cH+vWWA0JQrsrFn+6M11lT23VOzQCFA==
