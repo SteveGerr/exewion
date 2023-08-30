@@ -6,6 +6,7 @@
       name="chx"
       :checked="checked"
       @change="onChange"
+      :value="value"
       >
     <div class="checkbox-button__body">
       <slot></slot>
@@ -18,7 +19,8 @@ import { defineProps, defineEmits } from 'vue'
 defineProps({
   checked: Boolean,
   id: Number || String,
-  name: String
+  name: String,
+  value: String
 })
 
 const emit = defineEmits(['onChange'])
@@ -26,6 +28,7 @@ const onChange = (e) => {
   emit('onChange', e)
 }
 </script>
+
 <style lang="scss" scoped>
   .checkbox-button {
 
