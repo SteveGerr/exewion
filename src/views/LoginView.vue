@@ -134,7 +134,7 @@ const onLogin = () => {
       align-items: center;
       width: 100%;
       padding: 3rem;
-      margin: 100px 0 0 0;
+      margin: 211px 0 0 0;
 
       @media screen and (max-width: 768px) {
         margin: 0;

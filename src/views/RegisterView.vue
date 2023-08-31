@@ -37,7 +37,7 @@
             type="password"
             >
           </AppInput>
-          <AppButton class="login__apply" @on-click="onRegister(user)" :disabled="!checkPassword" green middle>
+          <AppButton class="login__apply" @on-click="send" :disabled="!checkPassword" green middle>
             ПОДТВЕРДИТЬ
           </AppButton>
         </div>
@@ -69,6 +69,13 @@ const user = ref({
   password: '',
   repeatPassword: ''
 })
+
+const send = () => {
+  onRegister(user)
+  user.value.email = ''
+  user.value.password = ''
+  user.value.repeatPassword = ''
+}
 
 </script>
 
@@ -128,7 +135,7 @@ const user = ref({
       align-items: center;
       width: 100%;
       padding: 3rem;
-      margin: 100px 0 0 0;
+      margin: 211px 0 0 0;
 
       @media screen and (max-width: 768px) {
         margin: 10px 0 0 0;
