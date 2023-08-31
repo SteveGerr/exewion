@@ -18,9 +18,9 @@ import AppSidebar from '@/components/sidebar/AppSidebar.vue'
 import AppHeader from '@/components/header/AppHeader.vue'
 import RocketIcon from '@/components/icons/RocketIcon.vue'
 import ManIcon from '@/components/icons/ManIcon.vue'
-import BagIcon from '@/components/icons/BagIcon.vue'
-import WalletIcon from '@/components/icons/WalletIcon.vue'
-import ChipIcon from '@/components/icons/ChipIcon.vue'
+// import BagIcon from '@/components/icons/BagIcon.vue'
+// import WalletIcon from '@/components/icons/WalletIcon.vue'
+// import ChipIcon from '@/components/icons/ChipIcon.vue'
 
 const route = useRoute()
 
@@ -31,24 +31,24 @@ const sidebarItems = [
     route: '/start',
     active: false
   },
-  {
-    id: 2,
-    icon: ChipIcon,
-    route: '/stock',
-    active: true
-  },
-  {
-    id: 3,
-    icon: BagIcon,
-    route: '/portfolio',
-    active: false
-  },
-  {
-    id: 4,
-    icon: WalletIcon,
-    route: '/wallet',
-    active: false
-  },
+  // {
+  //   id: 2,
+  //   icon: ChipIcon,
+  //   route: '/stock',
+  //   active: true
+  // },
+  // {
+  //   id: 3,
+  //   icon: BagIcon,
+  //   route: '/portfolio',
+  //   active: false
+  // },
+  // {
+  //   id: 4,
+  //   icon: WalletIcon,
+  //   route: '/wallet',
+  //   active: false
+  // },
   {
     id: 5,
     icon: ManIcon,
