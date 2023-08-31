@@ -138,9 +138,13 @@ export const useStepsStore = defineStore('steps', () => {
     }
     socketService.request('register', user).then(data => {
       console.log(data)
+      // Если всё регистрация прошла переходим на логин
+      router.push('/login')
     }).catch((error) => {
       console.log(error)
     })
+    // Для демо! Когда будет работать регистрация, этот пуш можно убрать
+    router.push('/login')
   }
 
   /** Copy IP address */
