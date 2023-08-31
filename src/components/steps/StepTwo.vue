@@ -113,6 +113,10 @@ const data = ref({
       .checkbox-button__body {
         height: 109px;
       }
+
+      img {
+        pointer-events: none;
+      }
     }
 
     &__how-to-create {
