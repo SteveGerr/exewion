@@ -6,7 +6,7 @@
         <AppLink v-if="forgot" :href="'#'">Забыли пароль?</AppLink>
       </div>
       <input
-        id="input"
+        :id="id"
         class="app-input__input"
         :value="modelValue"
         @input="updateValue"
@@ -40,6 +40,7 @@ import AppLink from '@/components/links/AppLink.vue'
 import AppButton from '../buttons/AppButton.vue'
 
 defineProps({
+  id: String,
   modelValue: String,
   placeholder: String,
   label: String,
