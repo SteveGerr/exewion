@@ -26,7 +26,7 @@
         <RocketIcon class="login__rocket" />
         <AppHeading class="login__register-title" uppercase>register</AppHeading>
         <div class="login__inputs">
-          <AppInput v-model="user.email" :label="'e-mail'" placeholder="Введите ваш E-mail"></AppInput>
+          <AppInput v-model="user.email" :label="'e-mail'" placeholder="Введите ваш E-mail" type="email" :pattern="'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'"></AppInput>
           <AppInput v-model="user.password" :label="'Пароль'" placeholder="Введите ваш пароль" type="password"></AppInput>
           <AppInput
             v-model="user.repeatPassword"
