@@ -45,6 +45,8 @@
             placeholder="Введите новый пароль еще раз"
             label="повторите новый пароль"
             purple
+            :valid="checkPassword"
+            :valid-text="'Пароли не совпадают'"
           >
           </AppInput>
         </div>
@@ -58,7 +60,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useStepsStore } from '@/store/store'
 import AppHeading from '@/components/heading/AppHeading.vue'
@@ -87,6 +89,8 @@ const reset = () => {
   passwords.value.newPassword = ''
   passwords.value.newPasswordAgain = ''
 }
+
+const checkPassword = computed(() => passwords.value.newPassword === passwords.value.newPasswordAgain)
 
 </script>
 
