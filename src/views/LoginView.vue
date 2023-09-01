@@ -26,11 +26,30 @@
         <RocketIcon class="login__rocket" />
         <AppHeading class="login__register-title" uppercase>LOGIN</AppHeading>
         <div class="login__inputs">
-          <AppInput v-model="credentials.login" :label="'e-mail'" :tabindex="1" placeholder="Введите ваш E-mail"></AppInput>
-          <AppInput v-model="credentials.password" :label="'Пароль'" :tabindex="2" forgot placeholder="Введите ваш пароль" type="password"></AppInput>
+          <AppInput
+            v-model="credentials.login"
+            :label="'e-mail'"
+            :tabindex="1"
+            placeholder="Введите ваш E-mail"
+            type="email"
+            :valid="isValidEmail"
+            :valid-text="'Некорректный email'"
+            >
+          </AppInput>
+          <AppInput
+            v-model="credentials.password"
+            :label="'Пароль'"
+            :tabindex="2"
+            forgot placeholder="Введите ваш пароль"
+            type="password"
+            :valid="credentials.password.length > 3"
+            :valid-text="'Некорректный пароль'"
+            >
+          </AppInput>
           <AppButton @on-click="onLogin" class="login__apply" green middle>
             ПОДТВЕРДИТЬ
           </AppButton>
+          <p class="login__warning">{{ invalidLogin ? 'Ошибка регистрации' : ''}}</p>
         </div>
       </div>
     </AppWrapper>
@@ -38,7 +57,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { storeToRefs } from 'pinia'
 import { useStepsStore } from '@/store/store'
 import AppButton from '@/components/buttons/AppButton.vue'
 import AppInput from '@/components/inputs/AppInput.vue'
@@ -51,20 +71,35 @@ import RocketIcon from '@/components/icons/RocketIcon.vue'
 const store = useStepsStore()
 
 const { onLogIn } = store
+const { invalidLogin } = storeToRefs(store)
 
 const credentials = ref({
   login: '',
   password: ''
 })
 
+const isInvalid = ref(false)
+
+const notEmpty = computed(() => {
+  return credentials.value.password.length > 3 && credentials.value.login.length > 5
+})
+
+const isValidEmail = computed(() => {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+  return emailRegex.test(credentials.value.login)
+})
+
 const onLogin = () => {
-  if (credentials.value.password.length > 0 && credentials.value.login.length > 0) {
+  if (notEmpty.value && isValidEmail.value) {
     onLogIn({
       login: credentials.value.login,
       password: credentials.value.password
     })
     credentials.value.login = ''
     credentials.value.password = ''
+    isInvalid.value = false
+  } else {
+    isInvalid.value = true
   }
 }
 
@@ -199,6 +234,12 @@ const onLogin = () => {
       width: 100%;
       max-width: 380px;
       gap: 17px;
+    }
+
+    &__warning {
+      height: 12px;
+      @include text(12px, normal, 400);
+      color: crimson;
     }
 
   }
