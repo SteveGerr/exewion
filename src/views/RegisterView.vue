@@ -26,8 +26,24 @@
         <RocketIcon class="login__rocket" />
         <AppHeading class="login__register-title" uppercase>register</AppHeading>
         <div class="login__inputs">
-          <AppInput v-model="user.email" :label="'e-mail'" placeholder="Введите ваш E-mail" type="email" :pattern="'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'"></AppInput>
-          <AppInput v-model="user.password" :label="'Пароль'" placeholder="Введите ваш пароль" type="password"></AppInput>
+          <AppInput
+            v-model="user.email"
+            :label="'e-mail'"
+            placeholder="Введите ваш E-mail"
+            type="email"
+            :valid="isValidEmail"
+            :valid-text="'Некорректный email'"
+            >
+          </AppInput>
+          <AppInput
+            v-model="user.password"
+            :label="'Пароль'"
+            placeholder="Введите ваш пароль"
+            type="password"
+            :valid="notEmpty"
+            :valid-text="'Пароль слишком короткий'"
+            >
+          </AppInput>
           <AppInput
             v-model="user.repeatPassword"
             :label="'ПОВТОРИТЕ Пароль'"
@@ -37,9 +53,10 @@
             type="password"
             >
           </AppInput>
-          <AppButton class="login__apply" @on-click="send" :disabled="!checkPassword" green middle>
+          <AppButton class="login__apply" @on-click="submit" :disabled="!checkPassword" green middle>
             ПОДТВЕРДИТЬ
           </AppButton>
+          <p class="login__warning">{{ isRegister ? 'Ошибка регистрации' : ''}}</p>
         </div>
       </div>
     </AppWrapper>
@@ -48,6 +65,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { storeToRefs } from 'pinia'
 import { useStepsStore } from '@/store/store'
 import AppButton from '@/components/buttons/AppButton.vue'
 import AppInput from '@/components/inputs/AppInput.vue'
@@ -60,6 +78,7 @@ import ExewionIcon from '@/components/icons/ExewionIcon.vue'
 const store = useStepsStore()
 
 const { onRegister } = store
+const { isRegister } = storeToRefs(store)
 
 // eslint-disable-next-line no-unused-vars
 const checkPassword = computed(() => user.value.password === user.value.repeatPassword)
@@ -70,11 +89,19 @@ const user = ref({
   repeatPassword: ''
 })
 
-const send = () => {
-  onRegister(user)
-  user.value.email = ''
-  user.value.password = ''
-  user.value.repeatPassword = ''
+const isValidEmail = computed(() => {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+  return emailRegex.test(user.value.email)
+})
+
+const notEmpty = computed(() => {
+  return user.value.password.length > 3
+})
+
+const submit = () => {
+  if (isValidEmail.value && notEmpty) {
+    onRegister(user)
+  }
 }
 
 </script>
@@ -199,6 +226,12 @@ const send = () => {
       width: 100%;
       max-width: 380px;
       gap: 17px;
+    }
+
+    &__warning {
+      height: 12px;
+      @include text(12px, normal, 400);
+      color: crimson;
     }
 
   }
