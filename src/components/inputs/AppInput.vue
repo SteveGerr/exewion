@@ -41,11 +41,7 @@ import { defineProps, defineEmits, ref } from 'vue'
 // import AppLink from '@/components/links/AppLink.vue'
 import AppButton from '../buttons/AppButton.vue'
 
-<<<<<<< HEAD
-defineProps({
-=======
 const p = defineProps({
->>>>>>> 33eba21 ([feat] added error handlers)
   id: String,
   modelValue: String,
   placeholder: String,
