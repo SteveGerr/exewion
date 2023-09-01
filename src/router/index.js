@@ -16,7 +16,7 @@ const routes = [
     redirect: '/login'
   },
   {
-    path: '/:pathMatch(.*)', NotFound404
+    path: '/:pathMatch(.*)*', component: NotFound404
   },
   {
     path: '/ui-kit',
@@ -97,8 +97,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
-  // history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(process.env.BASE_URL),
   routes
 })
 
@@ -116,7 +115,7 @@ router.beforeEach((to, from, next) => {
       next()
     } else {
       next({
-        name: 'profile'
+        path: '/profile'
       })
     }
   } else {
