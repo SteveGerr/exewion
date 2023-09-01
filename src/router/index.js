@@ -8,11 +8,15 @@ import Portfolio from '../views/PortfolioView.vue'
 import Start from '../views/StartView.vue'
 import Main from '../views/MainView.vue'
 import Forgot from '../views/forgotPasswordView.vue'
+import NotFound404 from '../views/NoFoundViews.vue'
 
 const routes = [
   {
     path: '/',
     redirect: '/login'
+  },
+  {
+    path: '/:pathMatch(.*)', NotFound404
   },
   {
     path: '/ui-kit',
@@ -93,7 +97,8 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
+  // history: createWebHistory(process.env.BASE_URL),
   routes
 })
 
