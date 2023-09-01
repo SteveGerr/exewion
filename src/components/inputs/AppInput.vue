@@ -3,7 +3,7 @@
     <label for="input">
       <div class="app-input__label">
         {{ p.label }}
-        <AppLink v-if="p.forgot" :href="'#'">Забыли пароль?</AppLink>
+        <RouterLink v-if="p.forgot" class="app-input__forgot" :to="forgotLink">Забыли пароль?</RouterLink>
       </div>
       <input
         :id="p.id"
@@ -38,7 +38,7 @@
 
 <script setup>
 import { defineProps, defineEmits, ref } from 'vue'
-import AppLink from '@/components/links/AppLink.vue'
+// import AppLink from '@/components/links/AppLink.vue'
 import AppButton from '../buttons/AppButton.vue'
 
 <<<<<<< HEAD
@@ -60,7 +60,8 @@ const p = defineProps({
   inputmode: String,
   tabindex: Number,
   valid: Boolean,
-  validText: String
+  validText: String,
+  forgotLink: String
 })
 
 const emit = defineEmits(['update:modelValue', 'onBlur'])
@@ -163,6 +164,11 @@ const onBlur = () => {
     left: 10px;
     @include text(12px, normal, 400);
     color: crimson;
+  }
+
+  &__forgot {
+    text-transform: none;
+    text-decoration: underline;
   }
 }
 
