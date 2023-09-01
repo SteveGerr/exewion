@@ -8,7 +8,11 @@ export const useStepsStore = defineStore('steps', () => {
   const currentStep = ref(1)
   const rangeValue = ref(1)
   const ipAddress = ref('45.82.71.35')
-  const invalidLogin = ref(false)
+  const invalidLogin = ref('')
+
+  // register
+  const isRegister = ref('')
+
   // balance
   const balanceValue = ref(1000.10)
   const balanceHistoryData = ref(
@@ -104,15 +108,11 @@ export const useStepsStore = defineStore('steps', () => {
     socketService.request('auth', credentials).then((data) => {
       localStorage.setItem('token', data.remember_token)
       router.push('/profile')
-      invalidLogin.value = false
+      invalidLogin.value = ''
     })
       .catch((error) => {
-        try {
-          console.log(error)
-          invalidLogin.value = true
-        } catch (error) {
-
-        }
+        console.log(error)
+        invalidLogin.value = `${error}`
       })
   }
 
@@ -140,8 +140,10 @@ export const useStepsStore = defineStore('steps', () => {
       console.log(data)
       // Если всё регистрация прошла переходим на логин
       router.push('/login')
+      isRegister.value = ''
     }).catch((error) => {
       console.log(error)
+      isRegister.value = `${error}`
     })
     // Для демо! Когда будет работать регистрация, этот пуш можно убрать
     router.push('/login')
@@ -228,6 +230,7 @@ export const useStepsStore = defineStore('steps', () => {
     copyAddress,
     currentStep,
     credentials,
+    isRegister,
     onRegister,
     changeStep,
     changePass,
