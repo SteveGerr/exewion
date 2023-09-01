@@ -1,27 +1,29 @@
 <template>
-  <div :class="['app-input', {purple: purple}]">
+  <div :class="['app-input', {purple: p.purple}]">
     <label for="input">
       <div class="app-input__label">
-        {{ label }}
-        <AppLink v-if="forgot" :href="'#'">Забыли пароль?</AppLink>
+        {{ p.label }}
+        <AppLink v-if="p.forgot" :href="'#'">Забыли пароль?</AppLink>
       </div>
       <input
-        :id="id"
+        :id="p.id"
         class="app-input__input"
-        :value="modelValue"
+        :value="p.modelValue"
         @input="updateValue"
-        :type="type"
-        :placeholder="placeholder"
+        @blur="onBlur"
+        :type="p.type"
+        :placeholder="p.placeholder"
         step="0.01"
-        :pattern="pattern"
-        :min="min"
-        :inputmode="inputmode"
-        :tabindex="tabindex"
-        :valid="valid"
-        :validText="validText"
+        :pattern="p.pattern"
+        :min="p.min"
+        :max="p.max"
+        :inputmode="p.inputmode"
+        :tabindex="p.tabindex"
+        :valid="p.valid"
+        :validText="p.validText"
       />
       <AppButton
-        v-if="copy"
+        v-if="p.copy"
         @on-click="$emit('onCopy')"
         class="app-input__copy"
         small
@@ -30,16 +32,20 @@
         copy
       </AppButton>
     </label>
-    <span v-if="!valid" class="app-input__valid-text">{{ validText }}</span>
+    <span v-if="isInvalid" class="app-input__valid-text">{{ p.validText }}</span>
   </div>
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineProps, defineEmits, ref } from 'vue'
 import AppLink from '@/components/links/AppLink.vue'
 import AppButton from '../buttons/AppButton.vue'
 
+<<<<<<< HEAD
 defineProps({
+=======
+const p = defineProps({
+>>>>>>> 33eba21 ([feat] added error handlers)
   id: String,
   modelValue: String,
   placeholder: String,
@@ -50,18 +56,36 @@ defineProps({
   copy: Boolean,
   pattern: String,
   min: Number,
+  max: Number,
   inputmode: String,
   tabindex: Number,
   valid: Boolean,
   validText: String
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'onBlur'])
+
+const inputValue = ref('')
+const isInvalid = ref(false)
+
+const validation = () => {
+  if (p.valid === false) {
+    isInvalid.value = true
+  } else {
+    isInvalid.value = false
+  }
+}
 
 // eslint-disable-next-line no-undef
 const updateValue = (e) => {
   const el = e.target
+  inputValue.value = el.value
   emit('update:modelValue', el.value)
+}
+
+const onBlur = () => {
+  emit('onBlur')
+  validation()
 }
 
 </script>
