@@ -12,6 +12,8 @@ export const useStepsStore = defineStore('steps', () => {
 
   // register
   const isRegister = ref('')
+  // forgot
+  const isForgot = ref('')
 
   // balance
   const balanceValue = ref(1000.10)
@@ -209,6 +211,17 @@ export const useStepsStore = defineStore('steps', () => {
     })
   }
 
+  const onForgotPass = () => {
+    console.log('isForgot', isForgot)
+    // socketService.request('forgot').then(data => {
+    //   console.log(data)
+    // isForgot.value = ''
+    // }).catch(error => {
+    //   console.log(error)
+    // isForgot.value = `${error}`
+    // })
+  }
+
   return {
     portfolioDateProgress,
     removeSlelectedCoins,
@@ -227,6 +240,7 @@ export const useStepsStore = defineStore('steps', () => {
     invalidLogin,
     costForecast,
     joinToMarket,
+    onForgotPass,
     copyAddress,
     currentStep,
     credentials,
