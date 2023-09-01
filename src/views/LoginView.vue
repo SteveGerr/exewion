@@ -40,7 +40,9 @@
             v-model="credentials.password"
             :label="'Пароль'"
             :tabindex="2"
-            forgot placeholder="Введите ваш пароль"
+            forgot
+            placeholder="Введите ваш пароль"
+            :forgot-link="'/forgot'"
             type="password"
             :valid="credentials.password.length > 3"
             :valid-text="'Некорректный пароль'"
@@ -78,8 +80,6 @@ const credentials = ref({
   password: ''
 })
 
-const isInvalid = ref(false)
-
 const notEmpty = computed(() => {
   return credentials.value.password.length > 3 && credentials.value.login.length > 5
 })
@@ -97,9 +97,6 @@ const onLogin = () => {
     })
     credentials.value.login = ''
     credentials.value.password = ''
-    isInvalid.value = false
-  } else {
-    isInvalid.value = true
   }
 }
 
