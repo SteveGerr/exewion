@@ -8,10 +8,10 @@
           <p class="step-two__paragraph">Выберите биржу</p>
           <div class="step-two__stock-choice">
             <RadioButton @on-change="onSelectStock" :value="'binance'" class="step-two__radio-button" :id="2" checked>
-              <img :src="binance" alt="">
+              <BinanceIcon />
             </RadioButton>
             <RadioButton @on-change="onSelectStock" :value="'bybit'" class="step-two__radio-button" :id="1">
-              <img :src="Bybit" alt="">
+              <BybitIcon />
             </RadioButton>
           </div>
           <div class="step-two__inputs">
@@ -31,13 +31,13 @@
 <script setup>
 import { ref } from 'vue'
 import { useStepsStore } from '@/store/store'
-import AppHeading from '../heading/AppHeading.vue'
+import AppHeading from '@/components/heading/AppHeading.vue'
 import AppInput from '@/components/inputs/AppInput.vue'
-import binance from '@/assets/svg/binance.svg'
-import Bybit from '@/assets/svg/bybit.svg'
 import RadioButton from '@/components/radioButton/RadioButton.vue'
-import AppLink from '../links/AppLink.vue'
-import AppButton from '../buttons/AppButton.vue'
+import AppLink from '@/components/links/AppLink.vue'
+import AppButton from '@/components/buttons/AppButton.vue'
+import BinanceIcon from '@/components/icons/BinanceIcon.vue'
+import BybitIcon from '@/components/icons/BybitIcon.vue'
 
 const store = useStepsStore()
 
