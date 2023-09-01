@@ -51,7 +51,7 @@
           <AppButton @on-click="onLogin" class="login__apply" green middle>
             ПОДТВЕРДИТЬ
           </AppButton>
-          <p class="login__warning">{{ invalidLogin ? 'Ошибка регистрации' : ''}}</p>
+          <p class="login__warning">{{ invalidLogin ? 'Ошибка автризации' : ''}}</p>
         </div>
       </div>
     </AppWrapper>
@@ -95,6 +95,7 @@ const onLogin = () => {
       login: credentials.value.login,
       password: credentials.value.password
     })
+
     credentials.value.login = ''
     credentials.value.password = ''
   }
