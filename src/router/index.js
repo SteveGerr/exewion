@@ -7,6 +7,7 @@ import Portfolio from '../views/PortfolioView.vue'
 // import Stock from '../views/StartView.vue'
 import Start from '../views/StartView.vue'
 import Main from '../views/MainView.vue'
+import Forgot from '../views/forgotPasswordView.vue'
 
 const routes = [
   {
@@ -80,6 +81,14 @@ const routes = [
       guest: true
     },
     component: Register
+  },
+  {
+    path: '/forgot',
+    name: 'forgot',
+    meta: {
+      guest: true
+    },
+    component: Forgot
   }
 ]
 
