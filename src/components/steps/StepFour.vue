@@ -205,11 +205,11 @@ const { createPortfolio, addCoin, changeBalanceRange, removeSlelectedCoins } = s
     &__selected-coins {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       width: 100%;
-      height: 45px;
+      min-height: 45px;
       margin: 0 0 100px 0;
       gap: 14px;
-      overflow-x: auto;
 
       @media screen and (max-width: 768px){
         margin: 0 0 60px 0;
