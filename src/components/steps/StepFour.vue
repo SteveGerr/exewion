@@ -25,7 +25,9 @@
               @input="changeBalanceRange"
               type="number"
               purple
-              :min="0" inputmode="numeric" pattern="[0-9]*"
+              :min="0"
+              :max="100000000"
+              inputmode="numeric"
               >
             </AppInput>
             <p class="step-four__enter-balance-label">USDT</p>
