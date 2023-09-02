@@ -2,7 +2,7 @@
   <AppWrapper>
     <div class="sidebar">
       <SidebarItem v-for="item in items" :active="item.route === current" :key="item.id">
-        <router-link :to="item.route">
+        <router-link :to="item.route ? item.route : ''">
           <component
             :class="['sidebar__icon', {'active': item.route === current}]"
             :is="item.icon">
