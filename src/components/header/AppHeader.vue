@@ -15,9 +15,27 @@
           <SelectLanguage :options="['ru', 'eng']"></SelectLanguage>
         </AppWrapper>
         <AppWrapper>
-          <AppButton class="navbar__notification" transparent>
+          <AppButton
+            class="navbar__notification"
+            transparent
+            @on-click="showNotifications = !showNotifications"
+          >
           <BellIcon :active="true" />
-          <p class="navbar__notification-count">{{ notifications }}</p>
+          <p class="navbar__notification-count">{{ notifications.length }}</p>
+          <transition name="list">
+            <AppNotifications class="navbar__notifications" :show="showNotifications">
+              <transition-group name="list">
+                <AppNotice
+                  v-for="item in notifications"
+                  :key="item.id"
+                  :status="item.status"
+                  @remove="removeNotice(item.id)"
+                >
+                  {{ item.text }}
+                </AppNotice>
+              </transition-group>
+            </AppNotifications>
+          </transition>
         </AppButton>
         </AppWrapper>
         <AppWrapper>
@@ -67,14 +85,18 @@ import ManIconDinamic from '@/components/icons/ManIconDinamic.vue'
 import ExitIcon from '@/components/icons/ExitIcon.vue'
 import BurgerIcon from '@/components/icons/BurgerIcon.vue'
 import { storeToRefs } from 'pinia'
+import AppNotifications from '../notifications/AppNotifications.vue'
+import AppNotice from '@/components/notifications/AppNotice.vue'
 
-const { onLogOut } = useStepsStore()
+const { onLogOut, removeNotice } = useStepsStore()
 
 const store = useStepsStore()
 
 const { notifications, balanceValue } = storeToRefs(store)
 
 const showMenu = ref(false)
+
+const showNotifications = ref(false)
 
 </script>
 <style lang="scss" scoped>
@@ -179,6 +201,9 @@ const showMenu = ref(false)
       display: none;
     }
    }
+   &__notification {
+    position: relative;
+   }
 
    &__notification-count {
     margin: 0 0 0 4px;
@@ -187,6 +212,17 @@ const showMenu = ref(false)
 
     @media screen and (max-width: 768px) {
       @include text(12px, 14px, 600);
+    }
+   }
+
+   &__notifications {
+      position: absolute;
+      top: 65px;
+      right: -20px;
+
+    @media screen and (max-width: 700px){
+      right: auto;
+      left: -20px;
     }
    }
 
@@ -292,4 +328,12 @@ const showMenu = ref(false)
     }
 
   }
+
+  .list-enter-active, .list-leave-active {
+      transition: all 1s;
+    }
+    .list-enter, .list-leave-to {
+      opacity: 0;
+      transform: translateY(30px);
+    }
 </style>
