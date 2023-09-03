@@ -3,7 +3,23 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import router from '@/router'
 export const useStepsStore = defineStore('steps', () => {
-  const notifications = ref(11)
+  const notifications = ref([
+    {
+      id: 1,
+      text: 'Напоминание о ребалансировке',
+      status: 0
+    },
+    {
+      id: 2,
+      text: 'Напоминание о ребалансировке на сумму 25 USDT',
+      status: 1
+    },
+    {
+      id: 3,
+      text: 'Пополните баланс, чтобы ребалансировка произошла',
+      status: 0
+    }
+  ])
   const usdtValue = ref(1000)
   const currentStep = ref(1)
   const rangeValue = ref(1)
@@ -177,6 +193,7 @@ export const useStepsStore = defineStore('steps', () => {
       assets: selectedCoins.value
     }
     socketService.request('createPorfolio', params).then(data => {
+      router.push('/portfolio')
       console.log(data)
     }).catch(error => {
       console.log(error)
@@ -222,6 +239,10 @@ export const useStepsStore = defineStore('steps', () => {
     // })
   }
 
+  const removeNotice = (noticeId) => {
+    notifications.value = notifications.value.filter((notice) => notice.id !== noticeId)
+  }
+
   return {
     portfolioDateProgress,
     removeSlelectedCoins,
@@ -236,6 +257,7 @@ export const useStepsStore = defineStore('steps', () => {
     notifications,
     portfolioData,
     portfolioCost,
+    removeNotice,
     balanceValue,
     invalidLogin,
     costForecast,
