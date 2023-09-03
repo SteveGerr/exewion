@@ -67,6 +67,23 @@
         <img :src="Bybit" alt="">
       </RadioButton>
     </Form>
+    <transition name="list">
+      <AppNotifications :show="true">
+        <transition-group name="list">
+          <AppNotice
+            class="list-item"
+            v-for="item in notifications"
+            :key="item.id"
+            :status="item.status"
+            @remove="removeNotice(item.id)"
+          >
+            {{ item.text }}
+          </AppNotice>
+        </transition-group>
+      </AppNotifications>
+    </transition>
+    <AppNotice :status="true">Напоминание о ребалансировке</AppNotice>
+    <AppNotice :status="false">Напоминание о ребалансировке на сумму 25 USDT</AppNotice>
   </div>
 </template>
 
@@ -96,6 +113,15 @@ import ThunderIcon from '@/components/icons/ThunderIcon.vue'
 import RadioButton from '@/components/radioButton/RadioButton.vue'
 import Binance from '@/components/icons/BinanceIcon.vue'
 import Bybit from '@/assets/svg/bybit.svg'
+import AppNotice from '@/components/notifications/AppNotice.vue'
+import AppNotifications from '@/components/notifications/AppNotifications.vue'
+import { useStepsStore } from '@/store/store'
+import { storeToRefs } from 'pinia'
+
+const store = useStepsStore()
+const { notifications } = storeToRefs(store)
+
+const { removeNotice } = store
 
 const email = ref('')
 const rangeValue = ref(10)
@@ -147,6 +173,24 @@ const sidebarItems = [
   }
 ]
 
+// const notifications = ref([
+//   {
+//     id: 1,
+//     text: 'Напоминание о ребалансировке',
+//     status: 0
+//   },
+//   {
+//     id: 2,
+//     text: 'Напоминание о ребалансировке на сумму 25 USDT',
+//     status: 0
+//   },
+//   {
+//     id: 3,
+//     text: 'Пополните баланс, чтобы ребалансировка произошла',
+//     status: 0
+//   }
+// ])
+
 const sendMail = () => {
   console.log(email.value)
 }
@@ -170,6 +214,8 @@ const onChange = (e) => {
     align-items: flex-start;
     flex-direction: column;
     gap: 10px;
+    padding: 10px;
+    background: #05001E;
 
     form {
       display: flex;
@@ -201,6 +247,12 @@ const onChange = (e) => {
         stroke: $green-light;
       }
     }
-
+    .list-enter-active, .list-leave-active {
+      transition: all 1s;
+    }
+    .list-enter, .list-leave-to {
+      opacity: 0;
+      transform: translateY(30px);
+    }
   }
 </style>
