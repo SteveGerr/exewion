@@ -14,7 +14,7 @@
         'disabled': disabled
       }
       ]"
-      @click="$emit('onClick')"
+      @click.stop="$emit('onClick')"
       >
       <ArrowsRightIcon v-if="register" class="app-button__arrow-left" />
       <ArrowRightIcon v-if="login" class="app-button__arrow-left" />
