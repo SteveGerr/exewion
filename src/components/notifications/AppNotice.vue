@@ -51,6 +51,11 @@ defineProps({
       top: -6px;
       right: 30px;
       transform: rotate(226deg);
+
+      @media screen and (max-width: 700px) {
+        right: auto;
+        left: 30px;
+      }
     }
 
     &__close {
