@@ -14,14 +14,15 @@
         <AppWrapper class="navbar__select-langauge">
           <SelectLanguage :options="['ru', 'eng']"></SelectLanguage>
         </AppWrapper>
-        <AppWrapper>
+        <AppWrapper class="navbar__notifications-wrapper">
           <AppButton
             class="navbar__notification"
             transparent
             @on-click="showNotifications = !showNotifications"
           >
-          <BellIcon :active="true" />
-          <p class="navbar__notification-count">{{ notifications.length }}</p>
+            <BellIcon :active="true" />
+            <p class="navbar__notification-count">{{ notifications.length }}</p>
+          </AppButton>
           <transition name="list">
             <AppNotifications class="navbar__notifications" :show="showNotifications">
               <transition-group name="list">
@@ -36,7 +37,6 @@
               </transition-group>
             </AppNotifications>
           </transition>
-        </AppButton>
         </AppWrapper>
         <AppWrapper>
           <div class="navbar__balance">
@@ -215,14 +215,38 @@ const showNotifications = ref(false)
     }
    }
 
+   &__notifications-wrapper {
+    position: relative;
+   }
+
    &__notifications {
+      max-height: 100vh;
+      padding: 10px 0 0 0;
       position: absolute;
-      top: 65px;
-      right: -20px;
+      top: 64px;
+      right: calc(50% - 80px);
+      overflow-x: hidden;
+      overflow-y: auto;
+      z-index: 100;
+
+      &::-webkit-scrollbar {
+        width: 3px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: $border-dark-purple;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: 20px;
+        border: 3px solid $gray;
+      }
 
     @media screen and (max-width: 700px){
+      top: 45px;
       right: auto;
-      left: -20px;
+      left: calc(50% - 40px);
     }
    }
 
@@ -334,6 +358,6 @@ const showNotifications = ref(false)
     }
     .list-enter, .list-leave-to {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateX(30px);
     }
 </style>
