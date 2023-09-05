@@ -24,7 +24,11 @@
             <p class="navbar__notification-count">{{ notifications.length }}</p>
           </AppButton>
           <transition name="list">
-            <AppNotifications class="navbar__notifications" :show="showNotifications">
+            <AppNotifications
+              class="navbar__notifications"
+              :show="showNotifications"
+              @mouseleave="showNotifications = false"
+              >
               <transition-group name="list">
                 <AppNotice
                   v-for="item in notifications"
