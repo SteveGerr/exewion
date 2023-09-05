@@ -29,7 +29,7 @@
               :show="showNotifications"
               @mouseleave="showNotifications = false"
               >
-              <transition-group name="list">
+              <transition-group name="notice">
                 <AppNotice
                   v-for="item in notifications"
                   :key="item.id"
@@ -358,10 +358,22 @@ const showNotifications = ref(false)
   }
 
   .list-enter-active, .list-leave-active {
-      transition: all 1s;
-    }
-    .list-enter, .list-leave-to {
-      opacity: 0;
-      transform: translateX(30px);
-    }
+    transition: all 1s;
+  }
+  .list-enter, .list-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .notice-enter-active, .notice-leave-active {
+    transition: all 1s;
+  }
+
+  .notice-enter-active, .notice-leave-active {
+    transition: all 1s;
+  }
+  .notice-enter, .notice-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+  }
 </style>
