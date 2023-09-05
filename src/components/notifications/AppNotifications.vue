@@ -17,7 +17,8 @@ defineProps({
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
+    width: 300px;
     gap: 10px;
   }
 
