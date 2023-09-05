@@ -22,7 +22,7 @@ import NoticeDotGreenIcon from '@/components/icons/NoticeDotGreenIcon.vue'
 import NoticeDotOrangeIcon from '@/components/icons/NoticeDotOrangeIcon.vue'
 
 defineProps({
-  status: Boolean
+  status: Number
 })
 
 </script>
@@ -41,6 +41,7 @@ defineProps({
     border-radius: 10px;
     position: relative;
     z-index: 100;
+    cursor: pointer;
 
     &::after {
       content: '';
