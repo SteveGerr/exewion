@@ -1,6 +1,10 @@
 <template>
-  <div class="select-language" :tabindex="tabindex" @blur="open = false">
-    <AppButton class="select-language__button" @onClick="open = !open" transparent>
+  <div class="select-language" :tabindex="tabindex" @mouseleave="close">
+    <AppButton
+      class="select-language__button"
+      @onClick="open = !open"
+      transparent
+    >
       <FlagIcon class="select-language__flag" />
       <p class="select-language__button-text">{{ selected }}</p>
       <ArrowDownIcon />
@@ -56,6 +60,12 @@ const selected = ref()
 const open = ref(false)
 
 selected.value = props.defaultValue || (props.options.length > 0 ? props.options[0] : null)
+
+const close = () => {
+  setTimeout(() => {
+    open.value = false
+  }, 1000)
+}
 
 onMounted(() => {
   emit('input', selected)
