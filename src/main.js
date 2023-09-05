@@ -8,6 +8,7 @@ import store from './store/store'
 import socketService from './websockets/socket.service'
 import process from 'process'
 import EventEmitter from 'events'
+import Vue3TouchEvents from 'vue3-touch-events'
 
 window.Buffer = Buffer
 window.process = process
@@ -17,4 +18,4 @@ socketService.init({}, 'wss://madinium.app:8443/')
 
 const pinia = createPinia()
 
-createApp(App).use(pinia).use(store).use(router).mount('#app')
+createApp(App).use(pinia).use(store).use(router).use(Vue3TouchEvents).mount('#app')
