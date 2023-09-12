@@ -1,22 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Login from '../views/LoginView.vue'
-import Register from '../views/RegisterView.vue'
-import Profile from '../views/ProfileView.vue'
+import Login from '@/views/LoginView.vue'
+import Register from '@/views/RegisterView.vue'
+import Profile from '@/views/ProfileView.vue'
 // import Wallet from ''
-import Portfolio from '../views/PortfolioView.vue'
-// import Stock from '../views/StartView.vue'
-import Start from '../views/StartView.vue'
-import Main from '../views/MainView.vue'
-import Forgot from '../views/forgotPasswordView.vue'
-import NotFound404 from '../views/NoFoundViews.vue'
+import Portfolio from '@/views/PortfolioView.vue'
+// import Stock from '@/views/StartView.vue'
+import Start from '@/views/StartView.vue'
+import Main from '@/views/MainView.vue'
+import Forgot from '@/views/forgotPasswordView.vue'
+import NotFound404 from '@/views/NoFoundViews.vue'
 
 const routes = [
   {
     path: '/',
-    redirect: '/login'
+    name: 'home',
+    redirect: '/profile'
   },
   {
-    path: '/:pathMatch(.*)*', component: NotFound404
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFound404,
+    meta: {
+      requiresAuth: false
+    }
   },
   {
     path: '/ui-kit',
@@ -66,32 +72,23 @@ const routes = [
         meta: {
           requiresAuth: true
         },
-        component: () => Profile
+        component: Profile
       }
     ]
   },
   {
     path: '/login',
     name: 'login',
-    meta: {
-      guest: true
-    },
     component: Login
   },
   {
     path: '/register',
     name: 'register',
-    meta: {
-      guest: true
-    },
     component: Register
   },
   {
     path: '/forgot',
     name: 'forgot',
-    meta: {
-      guest: true
-    },
     component: Forgot
   }
 ]
@@ -102,25 +99,13 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some((route) => route.meta?.requiresAuth)) {
     if (localStorage.getItem('token') === null) {
-      next({
-        path: '/login'
-      })
+      next({ path: '/login' })
     } else {
       next()
     }
-  } else if (to.matched.some(record => record.meta.guest)) {
-    if (localStorage.getItem('token') === null) {
-      next()
-    } else {
-      next({
-        path: '/profile'
-      })
-    }
-  } else {
-    next()
-  }
+  } else next()
 })
 
 export default router
