@@ -9,16 +9,12 @@
           <ExewionIcon class="login__company-name-image" />
         </div>
         <div class="login__description">crypto portfolio in 3 minutes</div>
-        <router-link class="login__register" to="/register">
-          <AppButton green register middle>
-            register
-          </AppButton>
-        </router-link>
-        <router-link class="login__login" to="/login">
-          <AppButton purple login middle>
-            login
-          </AppButton>
-        </router-link>
+        <AppButton class="login__register" green register middle @on-click="router.push('/register')">
+          register
+        </AppButton>
+        <AppButton class="login__login" purple login middle @on-click="router.push('/login')">
+          login
+        </AppButton>
       </div>
     </AppWrapper>
     <AppWrapper>
@@ -67,6 +63,7 @@
 import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useStepsStore } from '@/store/store'
+import { useRouter } from 'vue-router'
 import AppButton from '@/components/buttons/AppButton.vue'
 import AppInput from '@/components/inputs/AppInput.vue'
 import AppWrapper from '@/components/wrapper/AppWrapper.vue'
@@ -76,6 +73,7 @@ import AppHeading from '@/components/heading/AppHeading.vue'
 import ExewionIcon from '@/components/icons/ExewionIcon.vue'
 
 const store = useStepsStore()
+const router = useRouter()
 
 const { onRegister } = store
 const { isRegister } = storeToRefs(store)
